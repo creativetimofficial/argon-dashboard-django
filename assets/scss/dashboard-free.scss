@@ -1,0 +1,81 @@
+
+
+/*!
+
+=========================================================
+* Argon Dashboard - v1.1.2
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Copyright 2018 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+
+// Core
+
+@import "dashboard/core/custom/functions";
+@import "dashboard/core/custom/variables";
+@import "dashboard/core/custom/mixins";
+
+// bootstrap (4.3.1) components
+
+@import "dashboard/core/bootstrap/root";
+@import "dashboard/core/bootstrap/reboot";
+@import "dashboard/core/bootstrap/type";
+@import "dashboard/core/bootstrap/images";
+@import "dashboard/core/bootstrap/code";
+@import "dashboard/core/bootstrap/grid";
+@import "dashboard/core/bootstrap/tables";
+@import "dashboard/core/bootstrap/forms";
+@import "dashboard/core/bootstrap/buttons";
+@import "dashboard/core/bootstrap/transitions";
+@import "dashboard/core/bootstrap/dropdown";
+@import "dashboard/core/bootstrap/button-group";
+@import "dashboard/core/bootstrap/input-group";
+@import "dashboard/core/bootstrap/custom-forms";
+@import "dashboard/core/bootstrap/nav";
+@import "dashboard/core/bootstrap/navbar";
+@import "dashboard/core/bootstrap/card";
+@import "dashboard/core/bootstrap/breadcrumb";
+@import "dashboard/core/bootstrap/pagination";
+@import "dashboard/core/bootstrap/badge";
+@import "dashboard/core/bootstrap/jumbotron";
+@import "dashboard/core/bootstrap/alert";
+@import "dashboard/core/bootstrap/progress";
+@import "dashboard/core/bootstrap/media";
+@import "dashboard/core/bootstrap/list-group";
+@import "dashboard/core/bootstrap/close";
+@import "dashboard/core/bootstrap/modal";
+@import "dashboard/core/bootstrap/tooltip";
+@import "dashboard/core/bootstrap/popover";
+@import "dashboard/core/bootstrap/carousel";
+@import "dashboard/core/bootstrap/utilities";
+@import "dashboard/core/bootstrap/print";
+
+// Argon utilities and components
+
+@import "dashboard/core/custom/reboot";
+@import "dashboard/core/custom/utilities";
+@import "dashboard/core/custom/components";
+
+// Vendor (Plugins)
+
+@import "dashboard/core/custom/vendors";
+
+// Docs components
+
+@import "dashboard/core/docs/variables";
+@import "dashboard/core/docs/nav";
+@import "dashboard/core/docs/clipboard-js";
+@import "dashboard/core/docs/component-examples";
+@import "dashboard/core/docs/prism";
+@import "dashboard/core/docs/content";
+@import "dashboard/core/docs/sidebar";
+@import "dashboard/core/docs/footer";
