@@ -78,7 +78,7 @@ $ # Access the web app in browser: http://127.0.0.1:8000/
 <br />
 
 ## Documentation
-The documentation for the **Argon Dashboard Django** is hosted at our [website](https://demos.creative-tim.com/argon-dashboard-django/docs/1.0/getting-started/getting-started-django.html).
+The documentation for the **Argon Dashboard Django** is hosted at our [website](https://demos.creative-tim.com/argon-dashboard-django/docs/getting-started/getting-started-django.html).
 
 <br />
 
