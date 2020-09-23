@@ -1,11 +1,7 @@
 name: CI
 on:
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
-  # É possivel definir o pull_request para determinados tipos. Ex: Opened,
-  # Reopened, Synchronize
+    branches: [ master ] # É possivel definir o pull_request para determinados tipos. Ex: Opened, Reopened, Synchronize. types: [opened, synchronize, reopened]
 jobs:
   build:
     runs-on: ubuntu-latest
