@@ -2554,10 +2554,10 @@ pre code
 .form-control:focus
 {
     color: #495057;
-    border-color: #80bdff;
+    border-color: #669790;
     outline: 0;
     background-color: #fff;
-    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 57, 0.28);
 }
 .form-control::-ms-input-placeholder
 {
@@ -3143,7 +3143,7 @@ textarea.form-control.is-invalid
 .btn.focus
 {
     outline: 0;
-    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 57, 0.28);
 }
 .btn.disabled,
 .btn:disabled
@@ -4168,7 +4168,7 @@ input[type='button'].btn-block
     text-align: inherit;
     white-space: nowrap;
 
-    color: #212529;
+    color: #212923;
     border: 0; 
     background-color: transparent;
 }
@@ -4618,13 +4618,13 @@ input[type='button'].btn-block
 }
 .custom-control-input:focus:not(:checked) ~ .custom-control-label::before
 {
-    border-color: #80bdff;
+    border-color: #99ff80;
 }
 .custom-control-input:not(:disabled):active ~ .custom-control-label::before
 {
     color: #fff;
-    border-color: #b3d7ff; 
-    background-color: #b3d7ff;
+    border-color: #b3ffb9; 
+    background-color: #b3ffb9;
 }
 .custom-control-input[disabled] ~ .custom-control-label,
 .custom-control-input:disabled ~ .custom-control-label
@@ -4794,7 +4794,7 @@ input[type='button'].btn-block
 }
 .custom-select:focus
 {
-    border-color: #80bdff;
+    border-color: #80ffa6;
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(23, 89, 69, 0.5);
 }
@@ -4870,7 +4870,7 @@ input[type='button'].btn-block
 }
 .custom-file-input:focus ~ .custom-file-label
 {
-    border-color: #80bdff;
+    border-color: #80ffa6;
     box-shadow: 0 0 0 .2rem rgba(23, 89, 69, 0.5);
 }
 .custom-file-input[disabled] ~ .custom-file-label,
@@ -4985,7 +4985,7 @@ input[type='button'].btn-block
 }
 .custom-range::-webkit-slider-thumb:active
 {
-    background-color: #b3d7ff;
+    background-color: #b3ffc0;
 }
 .custom-range::-webkit-slider-runnable-track
 {
@@ -5022,7 +5022,7 @@ input[type='button'].btn-block
 }
 .custom-range::-moz-range-thumb:active
 {
-    background-color: #b3d7ff;
+    background-color: #b3ffc0;
 }
 .custom-range::-moz-range-track
 {
@@ -5061,7 +5061,7 @@ input[type='button'].btn-block
 }
 .custom-range::-ms-thumb:active
 {
-    background-color: #b3d7ff;
+    background-color: #b3ffc0;
 }
 .custom-range::-ms-track
 {
@@ -6217,7 +6217,7 @@ a.badge-primary:hover,
 a.badge-primary:focus
 {
     color: #fff;
-    background-color: #0062cc;
+    background-color: #6CCC00;
 }
 a.badge-primary:focus,
 a.badge-primary.focus
@@ -8077,7 +8077,7 @@ a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus
 {
-    background-color: #0062cc !important;
+    background-color: #6CCC00 !important;
 }
 
 .bg-secondary
