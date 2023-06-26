@@ -20,7 +20,7 @@
         display: block;
         height: 100%;
         width: 0;
-        background: green; }
+        background: #57AB27; }
     .dropzone .dz-preview .dz-error-message {
       color: red;
       display: none; }

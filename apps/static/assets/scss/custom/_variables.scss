@@ -28,13 +28,13 @@ $white:    #fff !default;
 $gray-100: #f6f9fc !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #8898aa !default;   // Line footer color
-$gray-700: #525f7f !default;   // Line p color
-$gray-800: #32325d !default;   // Line heading color
-$gray-900: #212529 !default;
-$black:    #000 !default;
+$gray-400: #e5edec !default;
+$gray-500: #b2cbc7 !default;
+$gray-600: #4c867e !default;   // Line footer color
+$gray-700: #196459!default;   // Line p color
+$gray-800: #005347!default;   // Line heading color
+$gray-900: #002923 !default;
+$black:    #000000!default;
 
 $grays: () !default;
 $grays: map-merge((
@@ -49,9 +49,9 @@ $grays: map-merge((
   "900": $gray-900
 ), $grays);
 
-$blue:    #5e72e4 !default;
-$indigo:  #5603ad !default;
-$purple:  #8965e0 !default;
+$blue:    #32756b !default;
+$indigo:  #005347 !default;
+$purple:  #004a3f !default;
 $pink:    #f3a4b5 !default;
 $red:     #f5365c !default;
 $orange:  #fb6340 !default;
