@@ -29,7 +29,7 @@
   --cyan: #ccdcda;
   --white: #fff;
   --gray: #8898aa;
-  --gray-dark: #32325d;
+  --gray-dark: #fff;
   --light: #ced4da;
   --lighter: #e9ecef;
   --primary: #005347;
@@ -40,7 +40,7 @@
   --danger: #f5365c;
   --light: #adb5bd;
   --dark: #212529;
-  --default: #172b4d;
+  --default: #fff;
   --white: #fff;
   --neutral: #fff;
   --darker: black;
@@ -1535,7 +1535,7 @@ pre {
   .form-control:focus {
     color: #8898aa;
     background-color: #fff;
-    border-color: #5e72e4;
+    border-color: #005347;
     outline: 0;
     box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1); }
   .form-control::placeholder {
@@ -14943,7 +14943,7 @@ button.section-darker:focus {
   letter-spacing: 0.125rem; }
 
 .text-blue {
-  color: #005347 !important; }
+  color: #669790 !important; }
 
 a.text-blue:hover, a.text-blue:focus {
   color: #233dd2 !important; }

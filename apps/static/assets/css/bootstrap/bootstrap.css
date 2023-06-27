@@ -9441,7 +9441,7 @@ button.bg-dark:focus
     }
     .float-xl-none
     {
-        float: none !important;
+        float: none !important; 
     }
 }
 
