@@ -13059,6 +13059,32 @@ textarea[resize="horizontal"] {
   .g-sidenav-pinned .sidenav .navbar-heading {
     display: block; }
 
+/* Agrega una clase para representar el estado contraído */
+.sidenav.collapsed {
+  max-width: 70px !important;
+}
+
+/* Estilos para los logotipos en la barra lateral colapsada */
+.sidenav.collapsed .navbar-brand {
+  display: none;
+}
+.sidenav.collapsed .navbar-brand-mini {
+  display: block;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* Estilo para la barra lateral contraída */
+.sidenav.collapsed .nav-link-text {
+  display: none;
+}
+
+.sidenav.collapsed .navbar-toggler {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 @media (min-width: 768px) {
   .nav-item .nav-link.active.active-pro {
     position: absolute;
@@ -17605,3 +17631,5 @@ input.datetimepicker[data-color="yellow"] + .bootstrap-datetimepicker-widget {
   background: transparent; }
 
 /*# sourceMappingURL=argon.css.map */
+
+ 
