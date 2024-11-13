@@ -3,7 +3,9 @@
 {% block title %} Dashboard {% endblock title %}
 
 <!-- Specific CSS goes HERE -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+{% endblock stylesheets %}
 
 {% block content %}
 
@@ -13,18 +15,18 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+              <h6 class="h2 text-white d-inline-block mb-0">Общие</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Default</li>
+                  <li class="breadcrumb-item"><a href="#">Компании</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Компания 1</li>
                 </ol>
               </nav>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-sm btn-neutral">New</a>
-              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                <a href="#" class="btn btn-sm btn-neutral">Добавить компанию</a>
+                <button id="periodButton" class="btn btn-sm btn-neutral">Выбрать период</button>
             </div>
           </div>
           <!-- Card stats -->
@@ -35,18 +37,15 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Total traffic</h5>
-                      <span class="h2 font-weight-bold mb-0">350,897</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Общая выручка</h5>
+                      <span class="h2 font-weight-bold mb-0">3,950,897 ₸</span>
                     </div>
                     <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                        <i class="ni ni-active-40"></i>
-                      </div>
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
                     <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
+                    <span class="text-nowrap">За этот месяц</span>
                   </p>
                 </div>
               </div>
@@ -57,18 +56,15 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                      <span class="h2 font-weight-bold mb-0">2,356</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">План продаж</h5>
+                      <span class="h2 font-weight-bold mb-0">87%</span>
                     </div>
                     <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                        <i class="ni ni-chart-pie-35"></i>
-                      </div>
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
                     <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
+                    <span class="text-nowrap">За этот месяц</span>
                   </p>
                 </div>
               </div>
@@ -79,18 +75,15 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                      <span class="h2 font-weight-bold mb-0">924</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Остаток</h5>
+                      <span class="h2 font-weight-bold mb-0">90,124,973 ₸</span>
                     </div>
                     <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
-                        <i class="ni ni-money-coins"></i>
-                      </div>
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
                     <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
+                    <span class="text-nowrap">За этот месяц</span>
                   </p>
                 </div>
               </div>
@@ -101,18 +94,15 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Произв. сотрудников</h5>
                       <span class="h2 font-weight-bold mb-0">49,65%</span>
                     </div>
                     <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                        <i class="ni ni-chart-bar-32"></i>
-                      </div>
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
                     <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
+                    <span class="text-nowrap">За этот месяц</span>
                   </p>
                 </div>
               </div>
@@ -130,32 +120,36 @@
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
                 <div class="col">
-                  <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
-                  <h5 class="h3 text-white mb-0">Sales value</h5>
+{#                  <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>#}
+                  <h5 class="h3 text-black-50 mb-0">План производства</h5>
                 </div>
-                <div class="col">
-                  <ul class="nav nav-pills justify-content-end">
-                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
-                      <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                        <span class="d-none d-md-block">Month</span>
-                        <span class="d-md-none">M</span>
-                      </a>
-                    </li>
-                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
-                      <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                        <span class="d-none d-md-block">Week</span>
-                        <span class="d-md-none">W</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+{#                <div class="col">#}
+{#                  <ul class="nav nav-pills justify-content-end">#}
+{#                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">#}
+{#                      <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">#}
+{#                        <span class="d-none d-md-block">Месяц</span>#}
+{#                        <span class="d-md-none">M</span>#}
+{#                      </a>#}
+{#                    </li>#}
+{#                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">#}
+{#                      <a href="#" class="nav-link py-2 px-3" data-toggle="tab">#}
+{#                        <span class="d-none d-md-block">Неделя</span>#}
+{#                        <span class="d-md-none">W</span>#}
+{#                      </a>#}
+{#                    </li>#}
+{#                  </ul>#}
+{#                </div>#}
+                  <div class="col text-right">
+                      <button id="chartToggleButton" class="btn btn-sm btn-neutral">Сменить график</button>
+                  </div>
               </div>
             </div>
             <div class="card-body">
               <!-- Chart -->
               <div class="chart">
                 <!-- Chart wrapper -->
-                <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+{#                <canvas id="chart-sales-dark" class="chart-canvas"></canvas>#}
+                  <canvas id="chart-production" class="chart-canvas"></canvas>
               </div>
             </div>
           </div>
@@ -165,15 +159,16 @@
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
                 <div class="col">
-                  <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                  <h5 class="h3 mb-0">Total orders</h5>
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">План продаж</h6>
+                  <h5 class="h3 mb-0">Заявки</h5>
                 </div>
               </div>
             </div>
             <div class="card-body">
               <!-- Chart -->
               <div class="chart">
-                <canvas id="chart-bars" class="chart-canvas"></canvas>
+{#                <canvas id="chart-bars" class="chart-canvas"></canvas>#}
+                  <canvas id="myPieChart" width="400" height="400"></canvas>
               </div>
             </div>
           </div>
@@ -408,7 +403,350 @@
 <!-- Specific JS goes HERE --> 
 {% block javascripts %}
 
-  <script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
-  <script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+    <script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <script>
+        var ctx1 = document.getElementById('chart-production').getContext('2d');
+
+        // Initial Data for the chart
+        var data = {
+            labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль'],
+            datasets: [{
+                label: 'Производство',
+                data: [30, 50, 40, 60, 70, 50, 90],
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                fill: false
+            }]};
+
+        // Create the initial line chart
+        var chartType = 'line';
+        var productionChart = new Chart(ctx1, {
+            type: chartType,
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                }
+            }});
+
+        // Toggle Button to change chart type between line, bar, and gauge
+        document.getElementById('chartToggleButton').addEventListener('click', function() {
+            productionChart.destroy();
+            if (chartType === 'line') {
+                chartType = 'bar';
+            } else if (chartType === 'bar') {
+                chartType = 'gauge';
+            } else {
+                chartType = 'line';
+            }
+
+            if (chartType === 'gauge') {
+                productionChart = new Chart(ctx1, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Выполнено', 'Осталось'],
+                        datasets: [{
+                            data: [70, 30],
+                            backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(201, 203, 207, 0.6)'],
+                            borderColor: ['rgba(75, 192, 192, 1)', 'rgba(201, 203, 207, 1)'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        label += context.raw + '%';
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        circumference: Math.PI,
+                        rotation: -Math.PI,
+                        cutout: '75%'
+                    }
+                });
+            } else {
+                productionChart = new Chart(ctx1, {
+                    type: chartType,
+                    data: data,
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                        }
+                    }
+                });
+            }});
+
+
+
+
+
+    var ctx1 = document.getElementById('chart-production').getContext('2d');
+
+    // Data for the chart with two datasets: Production Plan and Actual Production
+    var data = {
+        labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль'],
+        datasets: [
+            {
+                label: 'План производства',
+                data: [40, 60, 55, 70, 80, 60, 100], // This dataset represents the production plan
+                borderColor: 'rgb(164, 25, 54)',
+                backgroundColor: 'rgb(164, 25, 54)',
+                fill: false,
+                borderWidth: 2
+            },
+            {
+                label: 'Фактическое производство',
+                data: [30, 50, 40, 60, 70, 50, 90], // This dataset represents the actual production
+                borderColor: 'rgb(24,58,148)',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                fill: false,
+                borderWidth: 2
+            }
+        ]
+    };
+
+    // Create the initial line chart with two lines for Plan and Actual Production
+    var productionChart = new Chart(ctx1, {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ': ' + context.raw;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Производство'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Месяцы'
+                    }
+                }
+            }
+        }
+    });
+
+    // Toggle Button to change chart type between line, bar, and gauge
+    document.getElementById('chartToggleButton').addEventListener('click', function() {
+        productionChart.destroy();
+        if (chartType === 'line') {
+            chartType = 'bar';
+        } else if (chartType === 'bar') {
+            chartType = 'gauge';
+        } else {
+            chartType = 'line';
+        }
+
+        if (chartType === 'gauge') {
+            productionChart = new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Выполнено', 'Осталось'],
+                    datasets: [{
+                        data: [70, 30],
+                        backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(201, 203, 207, 0.6)'],
+                        borderColor: ['rgba(75, 192, 192, 1)', 'rgba(201, 203, 207, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    label += context.raw + '%';
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    circumference: Math.PI,
+                    rotation: -Math.PI,
+                    cutout: '75%'
+                }
+            });
+        } else {
+            productionChart = new Chart(ctx1, {
+                type: chartType,
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Производство'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Месяцы'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    });
+
+        $(document).ready(function() {
+            // Initialize date range picker
+            $('#periodButton').daterangepicker({
+              opens: 'left',
+              locale: {
+                format: 'YYYY-MM-DD',
+                applyLabel: 'Применить',
+                cancelLabel: 'Отмена',
+                fromLabel: 'От',
+                toLabel: 'До',
+                customRangeLabel: 'Выбрать',
+                daysOfWeek: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                firstDay: 1
+              },
+              startDate: moment().startOf('month'),
+              endDate: moment().endOf('month')
+            }, function(start, end, label) {
+              console.log("Period selected: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+          });
+
+
+        // Get the context of the canvas element we want to select
+        var ctx2 = document.getElementById('myPieChart').getContext('2d');
+
+        // Data for the pie chart
+        var data2 = {
+            labels: ['Поступившие', 'Завершенные', 'В процессе'],
+            datasets: [{
+                label: 'My Dataset',
+                data: [15, 44, 56], // Replace these values with your actual parameters
+                backgroundColor: [
+                    'rgb(164,25,54)', // Color for Parameter 1
+                    'rgb(24,58,148)', // Color for Parameter 2
+                    'rgb(15,105,52)'  // Color for Parameter 3
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Create the pie chart
+        var myPieChart = new Chart(ctx2, {
+            type: 'pie',
+            data: data2,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                }
+            }
+        });
+
+
+        $(document).ready(function() {
+            // Initialize date range picker
+            $('#periodButton').daterangepicker({
+              opens: 'left',
+              locale: {
+                format: 'YYYY-MM-DD',
+                applyLabel: 'Применить',
+                cancelLabel: 'Отмена',
+                fromLabel: 'От',
+                toLabel: 'До',
+                customRangeLabel: 'Выбрать',
+                daysOfWeek: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                firstDay: 1
+              },
+              startDate: moment().startOf('month'),
+              endDate: moment().endOf('month')
+            }, function(start, end, label) {
+              console.log("Period selected: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+              applyDateRangeToWidgets(start, end);
+            });
+
+            let chart1 = null;
+            let chart2 = null;
+
+            function applyDateRangeToWidgets(start, end) {
+              const formattedStart = start.format('YYYY-MM-DD');
+              const formattedEnd = end.format('YYYY-MM-DD');
+
+              console.log("Applying date range from " + formattedStart + " to " + formattedEnd + " to all widgets.");
+
+              if (chart1 !== null) {
+                updateChartData(chart1, formattedStart, formattedEnd);
+              }
+              if (chart2 !== null) {
+                updateChartData(chart2, formattedStart, formattedEnd);
+              }
+            }
+
+            function updateChartData(chart, startDate, endDate) {
+              console.log('Updating chart:', chart, 'with dates from', startDate, 'to', endDate);
+              // Example: chart.data.datasets[0].data = newData;
+              // chart.update();
+            }
+          });
+    </script>
 
 {% endblock javascripts %}

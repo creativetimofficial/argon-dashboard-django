@@ -1,0 +1,306 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">Финансы</h6>
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#">Компании</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Компания 1</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-lg-6 col-5 text-right">
+                        <a href="#" class="btn btn-sm btn-neutral">Добавить компанию</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <!-- Top row with 4 small widgets -->
+        <div class="row">
+            <!-- Widget Placeholder 1 -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card card-stats empty-widget" onclick="showWidgetModal(this)">
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <div class="col">
+                                <h2 class="card-title text-muted mb-0">Выберите виджет</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Widget Placeholder 2 -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card card-stats empty-widget" onclick="showWidgetModal(this)">
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <div class="col">
+                                <h2 class="card-title text-muted mb-0">Выберите виджет</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Widget Placeholder 3 -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card card-stats empty-widget" onclick="showWidgetModal(this)">
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <div class="col">
+                                <h2 class="card-title text-muted mb-0">Выберите виджет</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Widget Placeholder 4 -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card card-stats empty-widget" onclick="showWidgetModal(this)">
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <div class="col">
+                                <h2 class="card-title text-muted mb-0">Выберите виджет</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second row with 1 large widget and 1 small widget -->
+        <div class="row">
+            <!-- Large Widget Placeholder 5 -->
+            <div class="col-xl-8 col-md-12 mb-4">
+                <div class="card card-stats empty-widget" onclick="showWidgetModal(this)">
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <div class="col">
+                                <h2 class="card-title text-muted mb-0">Выберите график</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Small Widget Placeholder 6 -->
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card card-stats empty-widget" onclick="showWidgetModal(this)">
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <div class="col">
+                                <h2 class="card-title text-muted mb-0">Выберите график</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include "includes/footer.html" %}
+
+    </div>
+
+    <!-- Modal for Widget Selection -->
+    <div class="modal fade" id="widgetModal" tabindex="-1" role="dialog" aria-labelledby="widgetModalLabel"
+     aria-hidden="true">
+    <div class="modal-content" style="width: 70%; margin: 10vh auto;">
+        <div class="modal-header">
+            <h5 class="modal-title" id="widgetModalLabel">Выберите виджет</h5>
+        </div>
+        <div class="modal-body">
+            <!-- List of Widget Choices Divided by Groups -->
+            <h6 class="section-title">P&L Отчет</h6>
+            <div class="widget-group" style="overflow-x: auto; white-space: nowrap;">
+                <div class="widget-choice" data-widget-type="total_revenue">
+                    <h1>Общая выручка</h1>
+                </div>
+                <div class="widget-choice" data-widget-type="operating_profit">
+                    <h1>Операционная прибыль (EBITDA)</h1>
+                </div>
+                <div class="widget-choice" data-widget-type="net_profit">
+                    <h1>Чистая прибыль</h1>
+                </div>
+            </div>
+
+            <h6 class="section-title">Дебиторская и Кредиторская задолженность</h6>
+            <div class="widget-group" style="overflow-x: auto; white-space: nowrap;">
+                <div class="widget-choice" data-widget-type="debtor_liability">
+                    <h1>Дебиторская задолженность</h1>
+                </div>
+                <div class="widget-choice" data-widget-type="creditor_liability">
+                    <h1>Кредиторская задолженность</h1>
+                </div>
+                <div class="widget-choice" data-widget-type="debtor_turnover">
+                    <h1>Оборот дебиторской задолженности (дни)</h1>
+                </div>
+                <div class="widget-choice" data-widget-type="creditor_turnover">
+                    <h1>Оборот кредиторской задолженности (дни)</h1>
+                </div>
+            </div>
+
+            <h6 class="section-title">Эффективность</h6>
+            <div class="widget-group" style="overflow-x: auto; white-space: nowrap;">
+                <div class="widget-choice" data-widget-type="plan_fact_deviation">
+                    <h1>План/Факт/Отклонение</h1>
+                </div>
+                <div class="widget-choice" data-widget-type="cash_balance">
+                    <h1>Остаток на счёте</h1>
+                </div>
+                <div class="widget-choice" data-widget-type="break_even">
+                    <h1>Точка безубыточности</h1>
+                </div>
+                <div class="widget-choice" data-widget-type="employee_productivity">
+                    <h1>Производительность сотрудников</h1>
+                </div>
+            </div>
+
+            <h6 class="section-title">CashFlow</h6>
+            <div class="widget-group" style="overflow-x: auto; white-space: nowrap;">
+                <div class="widget-choice" data-widget-type="operational_cash_flow">
+                    <h1>Операционный денежный поток (OCF)</h1>
+                </div>
+                <div class="widget-choice" data-widget-type="investment_cash_flow">
+                    <h1>Инвестиционный денежный поток (ICF)</h1>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeWidgetModal();">Закрыть</button>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+    <script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+    <script>
+        let selectedWidgetSlot = null;
+
+        function showWidgetModal(widgetSlot) {
+            selectedWidgetSlot = widgetSlot;
+            const modal = document.getElementById('widgetModal');
+            modal.classList.add('show');
+            modal.style.display = 'block';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeWidgetModal() {
+            const modal = document.getElementById('widgetModal');
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+
+            // Remove any remaining backdrop elements
+            const backdrop = document.getElementById('customBackdrop');
+            if (backdrop) {
+                backdrop.remove();
+            }
+        }
+
+        // Handle clicking on widget placeholders
+        document.querySelectorAll('.empty-widget').forEach(widget => {
+            widget.addEventListener('click', function () {
+                showWidgetModal(widget);
+            });
+        });
+
+        // Handle widget selection
+        document.querySelectorAll('.widget-choice').forEach(choice => {
+            choice.addEventListener('click', function () {
+                const widgetType = this.getAttribute('data-widget-type');
+                console.log("Selected Widget Type:", widgetType);
+                // Close the modal
+                closeWidgetModal();
+
+                // Add logic to populate the widget slot with the selected widget
+                populateWidget(widgetType);
+            });
+        });
+
+        // Function to populate the widget slot with the selected widget
+        function populateWidget(widgetType) {
+            let widgetContent = '';
+            if (widgetType === 'total_revenue') {
+                widgetContent = `{% include 'widgets/total_revenue.html' %}`;
+            }
+            // More cases for other widget types...
+
+            if (selectedWidgetSlot) {
+                selectedWidgetSlot.classList.remove('empty-widget');
+                selectedWidgetSlot.innerHTML = widgetContent;
+                selectedWidgetSlot = null; // Reset after populating
+            }
+        }
+    </script>
+
+    <style>
+        .modal-content {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            height: auto;
+            max-height: 70vh;
+            overflow-y: auto;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #444;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .widget-choice {
+            background: #ffffff;
+            border: 2px solid #ececec;
+            border-radius: 8px;
+            padding: 15px;
+            flex: 1 1 calc(33% - 20px);
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .widget-choice:hover {
+            border-color: #007bff;
+            background: #f0f8ff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+        }
+
+        .widget-choice h1 {
+            font-size: 1.1em;
+            font-weight: normal;
+            color: #333;
+            margin: 0;
+        }
+    </style>
+
+{% endblock javascripts %}

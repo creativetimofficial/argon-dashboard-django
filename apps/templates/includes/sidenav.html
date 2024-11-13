@@ -2,8 +2,9 @@
   <div class="scrollbar-inner">
     <!-- Brand -->
     <div class="sidenav-header  align-items-center">
-      <a class="navbar-brand" href="/">
-        <img src="/static/assets/img/brand/blue.png" class="navbar-brand-img" alt="Argon Design - Jinja Template Logo.">
+      <a class="navbar-brand" href="/" style="background: black;">
+{#        <img src="/static/assets/img/brand/Logo.png" class="navbar-brand-img" alt="Argon Design - Jinja Template Logo.">#}
+          <img src="/static/assets/img/brand/logo_black.png">
       </a>
     </div>
     <div class="navbar-inner">
@@ -13,90 +14,58 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link {% if 'index' in segment %} active {% endif %}" href="/">
-              <i class="ni ni-tv-2 text-primary"></i>
-              <span class="nav-link-text">Dashboard</span>
+              <span class="nav-link-text">Общие</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if 'icons' in segment %} active {% endif %}" href="/icons.html">
-              <i class="ni ni-planet text-orange"></i>
-              <span class="nav-link-text">Icons</span>
+            <a class="nav-link {% if 'icons' in segment %} active {% endif %}" href="/finances.html">
+              <span class="nav-link-text">Финансы</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if 'map' in segment %} active {% endif %}" href="/map.html">
-              <i class="ni ni-pin-3 text-primary"></i>
-              <span class="nav-link-text">Google</span>
+            <a class="nav-link {% if 'map' in segment %} active {% endif %}" href="#">
+              <span class="nav-link-text">Производство</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if 'profile' in segment %} active {% endif %}" href="/profile.html">
-              <i class="ni ni-single-02 text-yellow"></i>
-              <span class="nav-link-text">Profile</span>
+            <a class="nav-link {% if 'profile' in segment %} active {% endif %}" href="#">
+              <span class="nav-link-text">Продажи</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link {% if 'tables' in segment %} active {% endif %}" href="/tables.html">
-              <i class="ni ni-bullet-list-67 text-default"></i>
-              <span class="nav-link-text">Tables</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login.html">
-              <i class="ni ni-key-25 text-info"></i>
-              <span class="nav-link-text">Login (template)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/register.html">
-              <i class="ni ni-circle-08 text-pink"></i>
-              <span class="nav-link-text">Register (template)</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">
-              <i class="ni ni-user-run text-red"></i>
-              <span class="nav-link-text">Logout</span>
-            </a>
-          </li>            
+{#          <li class="nav-item">#}
+{#            <a class="nav-link" href="{% url 'logout' %}">#}
+{#              <span class="nav-link-text">Logout</span>#}
+{#            </a>#}
+{#          </li>            #}
         </ul>
         <!-- Divider -->
+      <div style="position: absolute;
+            bottom: 0px;">
         <hr class="my-3">
         <!-- Heading -->
         <h6 class="navbar-heading p-0 text-muted">
-          <span class="docs-normal">Resources</span>
+          <span class="docs-normal">Управление</span>
         </h6>
         <!-- Navigation -->
         <ul class="navbar-nav mb-md-3">
 
           <li class="nav-item">
             <a class="nav-link" 
-               target="_blank" 
-               href="https://appseed.us/admin-dashboards/django-dashboard-argon">
-              <i class="ni ni-archive-2"></i>
-              <span class="nav-link-text">Product Page</span>
+               href="/plans.html">
+              <span class="nav-link-text">Цели и планы</span>
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" 
                target="_blank" 
-               href="https://appseed.us/admin-dashboards/django-dashboard-argon-pro">
-              <i class="ni ni-spaceship text-red"></i>
-              <span class="nav-link-text text-red">PRO Version</span>
+               href="#">
+              <span class="nav-link-text">Сотрудники</span>
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link active active-pro" 
-               target="_blank" 
-               href="http://appseed.us">
-              <i class="ni ni-send text-dark"></i>
-              <span class="nav-link-text">AppSeed</span>
-            </a>
-          </li>
         </ul>
+      </div>
       </div>
     </div>
   </div>

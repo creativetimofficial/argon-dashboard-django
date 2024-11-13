@@ -1,0 +1,114 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Set Goals {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css" />
+{% endblock stylesheets %}
+
+{% block content %}
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Цели и планы</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="#">Управление</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Цели и планы</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col-xl-8">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Установить цели производства и продаж</h3>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form id="setGoalsForm">
+                <div class="form-group">
+                  <label for="productionGoal">План производства</label>
+                  <input type="number" id="productionGoal" class="form-control" placeholder="Введите план производства" min="0" required>
+                </div>
+                <div class="form-group">
+                  <label for="salesGoal">План продаж (%)</label>
+                  <div id="salesGoalSlider" class="slider"></div>
+                  <input type="hidden" id="salesGoal" name="salesGoal">
+                  <p class="mt-2">Цель продаж: <span id="salesGoalValue">50%</span></p>
+                </div>
+                <div class="form-group">
+                  <label for="goalDeadline">Срок достижения цели</label>
+                  <input type="date" id="goalDeadline" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Сохранить цели</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% include "includes/footer.html" %}
+    </div>
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var salesGoalSlider = document.getElementById('salesGoalSlider');
+
+            noUiSlider.create(salesGoalSlider, {
+                start: 50,
+                connect: [true, false],
+                range: {
+                    'min': 0,
+                    'max': 100
+                },
+                step: 1,
+                format: {
+                    to: function (value) {
+                        return parseInt(value);
+                    },
+                    from: function (value) {
+                        return parseInt(value);
+                    }
+                }
+            });
+
+            salesGoalSlider.noUiSlider.on('update', function (values, handle) {
+                document.getElementById('salesGoalValue').innerText = values[handle] + '%';
+                document.getElementById('salesGoal').value = values[handle];
+            });
+
+            document.getElementById('setGoalsForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const productionGoal = document.getElementById('productionGoal').value;
+                const salesGoal = document.getElementById('salesGoal').value;
+                const goalDeadline = document.getElementById('goalDeadline').value;
+
+                console.log('План производства:', productionGoal);
+                console.log('План продаж:', salesGoal);
+                console.log('Срок достижения:', goalDeadline);
+
+                alert('Цели успешно сохранены!');
+            });
+        });
+    </script>
+{% endblock javascripts %}

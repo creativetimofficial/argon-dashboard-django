@@ -5104,7 +5104,7 @@ a.close.disabled {
   vertical-align: text-top !important; }
 
 .bg-primary {
-  background-color: #5e72e4 !important; }
+  background-color: #0a0c0d; }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
@@ -5168,7 +5168,7 @@ button.bg-dark:focus {
   background-color: #0a0c0d !important; }
 
 .bg-default {
-  background-color: #172b4d !important; }
+  background-color: #ffffff !important; }
 
 a.bg-default:hover, a.bg-default:focus,
 button.bg-default:hover,
@@ -10411,6 +10411,8 @@ button.bg-darker:focus {
 .text-white {
   color: #fff !important; }
 
+
+
 .text-primary {
   color: #5e72e4 !important; }
 
@@ -12553,7 +12555,8 @@ textarea[resize="horizontal"] {
   .navbar-vertical .navbar-brand-img,
   .navbar-vertical .navbar-brand > img {
     max-width: 100%;
-    max-height: 2rem; }
+    /*max-height: 2rem;*/
+  }
   @media (min-width: 768px) {
     .navbar-vertical .navbar-collapse {
       margin-left: -1rem;
