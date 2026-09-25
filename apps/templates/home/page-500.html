@@ -1,43 +1,66 @@
 {% extends 'layouts/base-fullscreen.html' %}
 
-{% block title %} Error 404 {% endblock title %}
+{% block title %}Erreur 500 - Erreur serveur{% endblock title %}
 
-<!-- Specific CSS goes HERE -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+<style>
+  body, .container {
+    background-color: #faf7f2; /* fond beige très clair */
+  }
+  .card.bg-secondary {
+    background-color: #fff8f0 !important; /* fond très clair, ton chaleureux */
+    border-radius: 1rem;
+  }
+  .text-muted {
+    color: #7d5a44 !important; /* couleur marron douce */
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .card-header {
+    padding-bottom: 2rem !important;
+  }
+  a {
+    color: #6b4c3b;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  a:hover {
+    color: #5a3e2b;
+    text-decoration: none;
+  }
+  .row.mt-3 a {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+</style>
+{% endblock stylesheets %}
 
 {% block content %}
-
-    <!-- Page content -->
-    <div class="container mt--8 pb-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7">
-          <div class="card bg-secondary shadow border-0">
-            <div class="card-header bg-transparent pb-5">
-
-              <div class="text-muted text-center mt-2 mb-3">
-                Oups! Error 500      
-              </div>
-
-              <div class="text-center mb-4">
-                Server error, please contact support - <a href="/">Home</a>.
-              </div>
-
+  <div class="container mt--8 pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-7">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-header bg-transparent pb-5">
+            <div class="text-muted text-center mt-2 mb-3" style="font-size: 1.6rem;">
+              Oups ! Erreur 500
+            </div>
+            <div class="text-center mb-4" style="font-size: 1rem;">
+              Erreur serveur, veuillez contacter le support - <a href="/">Accueil</a>.
             </div>
           </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <a href="/" class="text-light"><small>Home</small></a>
-            </div>
-            <div class="col-6 text-right">
-              <a target="_blank" 
-                 href="https://appseed.us/support" class="text-light"><small>Get Support</small></a>
-            </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-6">
+            <a href="/" class="text-light">Accueil</a>
+          </div>
+          <div class="col-6 text-right">
+            <a target="_blank" href="https://appseed.us/support" class="text-light">Obtenir de l’aide</a>
           </div>
         </div>
       </div>
     </div>
-
+  </div>
 {% endblock content %}
 
-<!-- Specific JS goes HERE --> 
 {% block javascripts %}{% endblock javascripts %}
+appseed.us

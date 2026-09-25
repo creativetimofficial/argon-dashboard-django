@@ -1,0 +1,80 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fdf6f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #a37b73;
+    margin-bottom: 30px;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 20px;
+}
+
+.month {
+    background-color: #fffaf4;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(211, 169, 156, 0.2);
+    border: 1px solid #f1ddd1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.month-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #d18166;
+    margin-bottom: 10px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #eac8bb;
+    border-radius: 10px;
+    background-color: #fffdfc;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: #5f4b46;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #d99f8d;
+    background-color: #fff7f5;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .calendar {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .calendar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .calendar {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,118 +1,171 @@
 {% extends 'layouts/base-fullscreen.html' %}
+{% load static %}
 
-{% block title %} Register {% endblock title %}
+{% block title %} 🐔 Poulailler Register {% endblock title %}
 
-<!-- Specific CSS goes HERE -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <style>
+      body {
+        background: linear-gradient(135deg, #fdf6ec, #e9f5e1);
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      .card {
+        border-radius: 20px;
+        background-color: #fffef8 !important;
+        box-shadow: 0 4px 20px rgba(164, 145, 110, 0.15);
+      }
+
+      .card-header {
+        background-color: transparent;
+        border-bottom: none;
+      }
+
+      .text-muted {
+        color: #7a6e4f !important;
+      }
+
+      .form-control {
+        border-radius: 12px;
+        border: 1px solid #cfc5a5;
+      }
+
+      .input-group-text {
+        background-color: #f2e8cf;
+        border: none;
+        border-radius: 12px 0 0 12px;
+        color: #a67838;
+      }
+
+      .btn-primary {
+        background-color: #8ab66b;
+        border-color: #8ab66b;
+        border-radius: 30px;
+        padding: 10px 25px;
+        transition: background-color 0.3s ease;
+        font-weight: bold;
+      }
+
+      .btn-primary:hover {
+        background-color: #6a9e4d;
+      }
+
+      .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: #a3c86d;
+      }
+
+      a.text-light small {
+        color: #a67838 !important;
+      }
+
+      a.text-light small:hover {
+        text-decoration: underline;
+      }
+
+      .text-error {
+        color: #d9534f;
+        font-size: 0.85rem;
+      }
+    </style>
+{% endblock stylesheets %}
 
 {% block content %}
 
-    <!-- Page content -->
-    <div class="container mt--8 pb-5">
-      <!-- Table -->
-      <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8">
-        
-          <div class="card bg-secondary shadow border-0">
-            <div class="card-header bg-transparent pb-5">
-              <div class="text-muted text-center mt-2 mb-4">
-                Sign UP
-              </div>
-            </div>
-            <div class="card-body px-lg-5 py-lg-5">
-              <div class="text-center text-muted mb-4">
-
-                {% if msg %}
-                  <small>{{ msg | safe }}</small>
-                {% else %}
-                  Add your credentials
-                {% endif %}  
-              
-              </div>
-
-              {% if not success %}
-
-                <form method="POST">
-
-                  {% csrf_token %}
-            
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
-                      </div>
-                      {{ form.username }}
-                    </div>
-                  </div>
-                  <span class="text-error">{{ form.username.errors }}</span>
-
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                      </div>
-                      {{ form.email }}
-                    </div>
-                  </div>
-                  <span class="text-error">{{ form.email.errors }}</span>
-
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                      </div>
-                      {{ form.password1 }}
-                    </div>
-                  </div>
-                  <span class="text-error">{{ form.password1.errors }}</span>
-
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                      </div>
-                      {{ form.password2 }}
-                    </div>
-                  </div>
-                  <span class="text-error">{{ form.password2.errors }}</span>
-
-                  <div class="row my-4">
-                    <div class="col-12">
-                      <div class="custom-control custom-control-alternative custom-checkbox">
-                        <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                        <label class="custom-control-label" for="customCheckRegister">
-                          <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary mt-4">Create account</button>
-                  </div>
-                </form>
-
-              {% endif %}  
-  
+  <div class="container mt--8 pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-header bg-transparent pb-5">
+            <div class="text-muted text-center mt-2 mb-4" style="font-size: 1.5rem;">
+              🐔 Join the Coop - Create your account!
             </div>
           </div>
+          <div class="card-body px-lg-5 py-lg-5">
+            <div class="text-center text-muted mb-4">
+              {% if msg %}
+                <small>{{ msg | safe }}</small>
+              {% else %}
+                Add your credentials
+              {% endif %}
+            </div>
 
+            {% if not success %}
+            <form method="POST">
+              {% csrf_token %}
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                  </div>
+                  {{ form.username }}
+                </div>
+                <span class="text-error">{{ form.username.errors }}</span>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                  </div>
+                  {{ form.email }}
+                </div>
+                <span class="text-error">{{ form.email.errors }}</span>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  </div>
+                  {{ form.password1 }}
+                </div>
+                <span class="text-error">{{ form.password1.errors }}</span>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  </div>
+                  {{ form.password2 }}
+                </div>
+                <span class="text-error">{{ form.password2.errors }}</span>
+              </div>
+
+              <div class="row my-4">
+                <div class="col-12">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                    <label class="custom-control-label" for="customCheckRegister">
+                      <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-4">Create account</button>
+              </div>
+            </form>
+            {% endif %}
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="row mt-3">
-        <div class="col-3"></div>
-        <div class="col-3">
-          <a href="{% url 'login' %}" class="text-light"><small>Login</small></a>
-        </div>
-        <div class="col-3 text-right">
-          <a href="https://appseed.us/support" class="text-light"><small>Get Support</small></a>
-        </div>
+    <div class="row mt-3">
+      <div class="col-3"></div>
+      <div class="col-3">
+        <a href="{% url 'login' %}" class="text-light"><small>Login</small></a>
       </div>
-
+      <div class="col-3 text-right">
+        <a href="https://appseed.us/support" class="text-light"><small>Get Support</small></a>
+      </div>
     </div>
   </div>
 
 {% endblock content %}
 
-<!-- Specific JS goes HERE --> 
 {% block javascripts %}{% endblock javascripts %}

@@ -10,18 +10,18 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="canonical" href="https://appseed.us/admin-dashboards/django-dashboard-argon">
-  
+
   <title>
-    Django Argon Dashboard - {% block title %} Open-Source Admin Panel {% endblock %} | AppSeed
+    Élevage de Poules - {% block title %} Panneau d'Administration {% endblock %} | AppSeed
   </title>
 
-  <link rel="icon" href="/static/assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="/static/assets/img/brand/chicken-favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
@@ -32,6 +32,25 @@
 
   <!-- Specific CSS goes HERE -->
   {% block stylesheets %}{% endblock stylesheets %}
+
+  <style>
+    /* Couleurs adaptées thème élevage poules */
+    body.bg-default {
+      background-color: #f9f7f1;
+    }
+    .header.bg-gradient-primary {
+      background: linear-gradient(87deg, #a3864a 0, #7c6830 100%) !important;
+    }
+    .header .text-white {
+      color: #fff8e1 !important;
+    }
+    a.text-white:hover {
+      color: #d6c17c !important;
+    }
+    .separator .fill-default {
+      fill: #7c6830 !important;
+    }
+  </style>
 
 </head>
 
@@ -49,11 +68,11 @@
             <div class="col-lg-5 col-md-6">
               <h1 class="text-white">
                 <a target="_blank" class="text-white"
-                   href="https://appseed.us/admin-dashboards/django-dashboard-argon">Django Argon</a>
+                   href="https://appseed.us/admin-dashboards/django-dashboard-argon">Élevage de Poules</a>
               </h1>
               <p class="text-lead text-light">
-                Open-Source Flask Starter with Argon Design 
-                Coded by <a target="_blank" class="text-white" href="https://appseed.us">AppSeed</a>.  
+                Tableau de bord d'administration pour la gestion de l'élevage.
+                Codé par <a target="_blank" class="text-white" href="https://appseed.us">AppSeed</a>.
               </p>
             </div>
           </div>
@@ -65,18 +84,18 @@
         </svg>
       </div>
     </div>
-    
+
     {% block content %}{% endblock content %}
 
     {% include "includes/footer-fullscreen.html" %}
 
   </div>
-    
+
   {% include "includes/scripts.html" %}
 
-  <!-- Specific JS goes HERE --> 
+  <!-- Specific JS goes HERE -->
   {% block javascripts %}{% endblock javascripts %}
-  
+
   <script src="/static/assets/js/argon.js?v=1.2.0"></script>
 
 </body>
