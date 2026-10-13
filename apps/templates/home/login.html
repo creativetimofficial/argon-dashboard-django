@@ -1,76 +1,130 @@
 {% extends 'layouts/base-fullscreen.html' %}
 
-{% block title %} Login {% endblock title %}
+{% block title %} Connexion - Élevage de Poules {% endblock title %}
 
-<!-- Specific CSS goes HERE -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+<style>
+  /* Fond doux beige clair pour rappeler la ferme */
+  .card.bg-secondary {
+    background-color: #fff8f0 !important;
+    border-radius: 0.5rem;
+  }
+  /* Image d'en-tête thématique */
+  .card-header {
+    background-image: url('/static/assets/img/poules-login-header.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 140px;
+    border-bottom: none;
+  }
+  /* Textes couleur terre */
+  .text-muted.text-center.mt-2.mb-3 small,
+  .text-muted {
+    color: #8b4513 !important;
+    font-weight: 600;
+  }
+  /* Boutons neutres style nature */
+  .btn-neutral {
+    border: 1px solid #a0522d;
+    color: #a0522d;
+    background-color: #fff8f0;
+    transition: background-color 0.3s ease;
+  }
+  .btn-neutral:hover {
+    background-color: #a0522d;
+    color: white;
+  }
+  /* Icônes recolorées */
+  .btn-inner--icon img {
+    width: 20px;
+    height: 20px;
+  }
+  .input-group-text i {
+    color: #a0522d;
+  }
+  /* Placeholder couleur thème */
+  .form-control::placeholder {
+    color: #a0522d;
+    opacity: 0.7;
+  }
+  /* Bouton principal dans les tons marrons */
+  .btn-primary {
+    background-color: #a0522d;
+    border-color: #a0522d;
+  }
+  .btn-primary:hover {
+    background-color: #8b4513;
+    border-color: #8b4513;
+  }
+  /* Checkbox label */
+  .custom-control-label span.text-muted {
+    color: #8b4513 !important;
+  }
+</style>
+{% endblock stylesheets %}
 
 {% block content %}
-
-    <!-- Page content -->
-    <div class="container mt--8 pb-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7">
-          <div class="card bg-secondary border-0 mb-0">
-            <div class="card-header bg-transparent pb-5">
-              <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
-              <div class="btn-wrapper text-center">
-                <a href="#" class="btn btn-neutral btn-icon">
-                  <span class="btn-inner--icon"><img src="/static/assets/img/icons/common/github.svg"></span>
-                  <span class="btn-inner--text">Github</span>
-                </a>
-                <a href="#" class="btn btn-neutral btn-icon">
-                  <span class="btn-inner--icon"><img src="/static/assets/img/icons/common/google.svg"></span>
-                  <span class="btn-inner--text">Google</span>
-                </a>
+<div class="container mt--8 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7">
+      <div class="card bg-secondary border-0 mb-0 shadow">
+        <div class="card-header bg-transparent pb-5">
+          <div class="text-muted text-center mt-2 mb-3"><small>Connectez-vous avec</small></div>
+          <div class="btn-wrapper text-center">
+            <a href="#" class="btn btn-neutral btn-icon" aria-label="Connexion via GitHub">
+              <span class="btn-inner--icon"><img src="/static/assets/img/icons/common/github.svg" alt="GitHub"></span>
+              <span class="btn-inner--text">GitHub</span>
+            </a>
+            <a href="#" class="btn btn-neutral btn-icon" aria-label="Connexion via Google">
+              <span class="btn-inner--icon"><img src="/static/assets/img/icons/common/google.svg" alt="Google"></span>
+              <span class="btn-inner--text">Google</span>
+            </a>
+          </div>
+        </div>
+        <div class="card-body px-lg-5 py-lg-5">
+          <div class="text-center text-muted mb-4">
+            <small>Ou connectez-vous avec vos identifiants</small>
+          </div>
+          <form role="form" action="/" method="POST">
+            <div class="form-group mb-3">
+              <div class="input-group input-group-merge input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                </div>
+                <input class="form-control" placeholder="Email" type="email" aria-label="Email" required>
               </div>
             </div>
-            <div class="card-body px-lg-5 py-lg-5">
-              <div class="text-center text-muted mb-4">
-                <small>Or sign in with credentials</small>
+            <div class="form-group">
+              <div class="input-group input-group-merge input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                </div>
+                <input class="form-control" placeholder="Mot de passe" type="password" aria-label="Mot de passe" required>
               </div>
-              <form role="form" action="/">
-                <div class="form-group mb-3">
-                  <div class="input-group input-group-merge input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                    </div>
-                    <input class="form-control" placeholder="Email" type="email">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                    </div>
-                    <input class="form-control" placeholder="Password" type="password">
-                  </div>
-                </div>
-                <div class="custom-control custom-control-alternative custom-checkbox">
-                  <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                  <label class="custom-control-label" for=" customCheckLogin">
-                    <span class="text-muted">Remember me</span>
-                  </label>
-                </div>
-                <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4">Sign in</button>
-                </div>
-              </form>
             </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <a href="/register.html" class="text-light"><small>Create Account</small></a>
+            <div class="custom-control custom-control-alternative custom-checkbox">
+              <input class="custom-control-input" id="customCheckLogin" type="checkbox" aria-label="Se souvenir de moi">
+              <label class="custom-control-label" for="customCheckLogin">
+                <span class="text-muted">Se souvenir de moi</span>
+              </label>
             </div>
-            <div class="col-6 text-right">
-              <a href="https://appseed.us?ref=j2-argon-demo" class="text-light"><small>Get Support</small></a>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary my-4">Se connecter</button>
             </div>
-          </div>
+          </form>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-6">
+          <a href="/register.html" class="text-dark"><small>Créer un compte</small></a>
+        </div>
+        <div class="col-6 text-right">
+          <a href="https://appseed.us?ref=j2-argon-demo" class="text-dark"><small>Besoin d’aide ?</small></a>
         </div>
       </div>
     </div>
-
+  </div>
+</div>
 {% endblock content %}
 
-<!-- Specific JS goes HERE --> 
 {% block javascripts %}{% endblock javascripts %}

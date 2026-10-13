@@ -1,44 +1,114 @@
 {% extends 'layouts/base.html' %}
 
-{% block title %} Profile {% endblock title %}
+{% block title %}Profil{% endblock title %}
+
+{% block stylesheets %}
+<style>
+  /* Fond header avec image paysage rural / ferme poules */
+  .header {
+    background-image: url(/static/assets/img/theme/farm-landscape.jpg);
+    background-size: cover;
+    background-position: center top;
+    min-height: 500px;
+    position: relative;
+  }
+  .header .mask {
+    background: rgba(141, 110, 63, 0.8); /* brun chaud avec opacité */
+  }
+  /* Texte blanc cassé */
+  .header h1, .header p {
+    color: #f5f0e6;
+  }
+  .btn-neutral {
+    background-color: #a57c3c;
+    color: #fff;
+    border: none;
+  }
+  .btn-neutral:hover {
+    background-color: #7c5d2c;
+    color: #fff;
+  }
+  /* Card profil avec tons naturels chauds */
+  .card-profile {
+    background-color: #f9f5ea;
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px rgba(124, 93, 44, 0.3);
+  }
+  .card-profile img.card-img-top {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+  .card-profile-image img {
+    border: 4px solid #7c5d2c;
+  }
+  .btn-info {
+    background-color: #9c7c47;
+    border-color: #9c7c47;
+  }
+  .btn-info:hover {
+    background-color: #7c5d2c;
+    border-color: #7c5d2c;
+  }
+  .btn-default {
+    background-color: #e4dccd;
+    border-color: #e4dccd;
+    color: #7c5d2c;
+  }
+  .btn-default:hover {
+    background-color: #cfc2a7;
+    color: #4a3816;
+  }
+  /* Titres et textes */
+  h3, h5, label {
+    color: #6e4e1e;
+  }
+  input.form-control, textarea.form-control {
+    border: 1px solid #cfc2a7;
+  }
+  input.form-control:focus, textarea.form-control:focus {
+    border-color: #7c5d2c;
+    box-shadow: none;
+  }
+</style>
+{% endblock stylesheets %}
 
 {% block content %}
 
-<div class="header pb-6 d-flex align-items-center" 
-     style="min-height: 500px; background-image: url(/static/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
-  <!-- Mask -->
+<div class="header pb-6 d-flex align-items-center">
   <span class="mask bg-gradient-default opacity-8"></span>
-  <!-- Header container -->
   <div class="container-fluid d-flex align-items-center">
     <div class="row">
       <div class="col-lg-7 col-md-10">
-        <h1 class="display-2 text-white"> 
-          Hello {{ request.user.username }}
+        <h1 class="display-2 text-white">
+          Bonjour {{ request.user.username }}
         </h1>
-        <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
-        <a href="#!" class="btn btn-neutral">Edit profile</a>
+        <p class="text-white mt-0 mb-5">
+          Bienvenue sur votre page de profil dédiée à la gestion de votre élevage de poules.
+          Suivez vos progrès et gérez facilement vos tâches et projets.
+        </p>
+        <a href="#!" class="btn btn-neutral">Modifier le profil</a>
       </div>
     </div>
   </div>
 </div>
-<!-- Page content -->
+
 <div class="container-fluid mt--6">
   <div class="row">
     <div class="col-xl-4 order-xl-2">
       <div class="card card-profile">
-        <img src="/static/assets/img/theme/img-1-1000x600.jpg" alt="Image placeholder" class="card-img-top">
+        <img src="/static/assets/img/theme/farm-cover.jpg" alt="Image de couverture élevage" class="card-img-top">
         <div class="row justify-content-center">
           <div class="col-lg-3 order-lg-2">
             <div class="card-profile-image">
               <a href="#">
-                <img src="/static/assets/img/theme/team-4.jpg" class="rounded-circle">
+                <img src="/static/assets/img/theme/chicken-profile.jpg" class="rounded-circle" alt="Photo profil utilisateur">
               </a>
             </div>
           </div>
         </div>
         <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
           <div class="d-flex justify-content-between">
-            <a href="#" class="btn btn-sm btn-info  mr-4 ">Connect</a>
+            <a href="#" class="btn btn-sm btn-info mr-4">Connecter</a>
             <a href="#" class="btn btn-sm btn-default float-right">Message</a>
           </div>
         </div>
@@ -48,7 +118,7 @@
               <div class="card-profile-stats d-flex justify-content-center">
                 <div>
                   <span class="heading">22</span>
-                  <span class="description">Friends</span>
+                  <span class="description">Amis</span>
                 </div>
                 <div>
                   <span class="heading">10</span>
@@ -56,23 +126,19 @@
                 </div>
                 <div>
                   <span class="heading">89</span>
-                  <span class="description">Comments</span>
+                  <span class="description">Commentaires</span>
                 </div>
               </div>
             </div>
           </div>
           <div class="text-center">
-            <h5 class="h3">
-              {{ request.user.username }}
-            </h5>
-            <div class="h5 font-weight-300">
-              {{ request.user.email }}
-            </div>
+            <h5 class="h3">{{ request.user.username }}</h5>
+            <div class="h5 font-weight-300">{{ request.user.email }}</div>
             <div class="h5 mt-4">
-              <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+              <i class="ni business_briefcase-24 mr-2"></i>Gestionnaire d'élevage - Responsable ferme
             </div>
             <div>
-              <i class="ni education_hat mr-2"></i>University of Computer Science
+              <i class="ni education_hat mr-2"></i>Université de Sciences Agricoles
             </div>
           </div>
         </div>
@@ -83,27 +149,27 @@
         <div class="card-header">
           <div class="row align-items-center">
             <div class="col-8">
-              <h3 class="mb-0">Edit profile </h3>
+              <h3 class="mb-0">Modifier le profil</h3>
             </div>
             <div class="col-4 text-right">
-              <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+              <a href="#!" class="btn btn-sm btn-primary">Paramètres</a>
             </div>
           </div>
         </div>
         <div class="card-body">
           <form>
-            <h6 class="heading-small text-muted mb-4">User information</h6>
+            <h6 class="heading-small text-muted mb-4">Informations utilisateur</h6>
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-username">Username</label>
-                    <input type="text" id="input-username" class="form-control" placeholder="Username" value="{{ request.user.username }}">
+                    <label for="input-username">Nom d'utilisateur</label>
+                    <input type="text" id="input-username" class="form-control" placeholder="Nom d'utilisateur" value="{{ request.user.username }}">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-email">Email address</label>
+                    <label for="input-email">Adresse email</label>
                     <input type="email" id="input-email" class="form-control" placeholder="{{ request.user.email }}">
                   </div>
                 </div>
@@ -111,58 +177,56 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-first-name">First name</label>
-                    <input type="text" id="input-first-name" class="form-control" placeholder="First name" value="Lucky">
+                    <label for="input-first-name">Prénom</label>
+                    <input type="text" id="input-first-name" class="form-control" placeholder="Prénom" value="Lucky">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Last name</label>
-                    <input type="text" id="input-last-name" class="form-control" placeholder="Last name" value="Jesse">
+                    <label for="input-last-name">Nom</label>
+                    <input type="text" id="input-last-name" class="form-control" placeholder="Nom" value="Jesse">
                   </div>
                 </div>
               </div>
             </div>
             <hr class="my-4" />
-            <!-- Address -->
-            <h6 class="heading-small text-muted mb-4">Contact information</h6>
+            <h6 class="heading-small text-muted mb-4">Informations de contact</h6>
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-address">Address</label>
-                    <input id="input-address" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                    <label for="input-address">Adresse</label>
+                    <input id="input-address" class="form-control" placeholder="Adresse" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-city">City</label>
-                    <input type="text" id="input-city" class="form-control" placeholder="City" value="New York">
+                    <label for="input-city">Ville</label>
+                    <input type="text" id="input-city" class="form-control" placeholder="Ville" value="New York">
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-country">Country</label>
-                    <input type="text" id="input-country" class="form-control" placeholder="Country" value="United States">
+                    <label for="input-country">Pays</label>
+                    <input type="text" id="input-country" class="form-control" placeholder="Pays" value="États-Unis">
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-country">Postal code</label>
-                    <input type="number" id="input-postal-code" class="form-control" placeholder="Postal code">
+                    <label for="input-postal-code">Code postal</label>
+                    <input type="number" id="input-postal-code" class="form-control" placeholder="Code postal">
                   </div>
                 </div>
               </div>
             </div>
             <hr class="my-4" />
-            <!-- Description -->
-            <h6 class="heading-small text-muted mb-4">About me</h6>
+            <h6 class="heading-small text-muted mb-4">À propos de moi</h6>
             <div class="pl-lg-4">
               <div class="form-group">
-                <label class="form-control-label">About Me</label>
-                <textarea rows="4" class="form-control" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                <label>À propos de moi</label>
+                <textarea rows="4" class="form-control" placeholder="Quelques mots à propos de vous ...">Un tableau de bord élégant pour votre élevage de poules.</textarea>
               </div>
             </div>
           </form>
@@ -172,10 +236,8 @@
   </div>
 
   {% include "includes/footer.html" %}
-
 </div>
 
 {% endblock content %}
 
-<!-- Specific JS goes HERE --> 
 {% block javascripts %}{% endblock javascripts %}

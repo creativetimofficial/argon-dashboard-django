@@ -1,42 +1,92 @@
 {% extends 'layouts/base-fullscreen.html' %}
 
-{% block title %} Register {% endblock title %}
+{% block title %} Inscription - Élevage de Poules {% endblock title %}
 
-<!-- Specific CSS goes HERE -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+<style>
+  .card.bg-secondary {
+    background-color: #fff9f0 !important;
+    border-radius: 0.5rem;
+  }
+  .card-header {
+    background-image: url('/static/assets/img/poules-register.jpg'); /* image à adapter */
+    background-size: cover;
+    background-position: center;
+    height: 140px;
+    border-bottom: none;
+  }
+  .text-muted.text-center.mt-2.mb-4 small {
+    color: #8b4513 !important;
+    font-weight: 600;
+  }
+  .btn-neutral {
+    border: 1px solid #a0522d;
+    color: #a0522d;
+    background-color: #fff8f0;
+    transition: background-color 0.3s ease;
+  }
+  .btn-neutral:hover {
+    background-color: #a0522d;
+    color: white;
+  }
+  .btn-inner--icon img {
+    width: 20px;
+    height: 20px;
+  }
+  .input-group-text i {
+    color: #a0522d;
+  }
+  .form-control::placeholder {
+    color: #a0522d;
+    opacity: 0.7;
+  }
+  .btn-primary {
+    background-color: #a0522d;
+    border-color: #a0522d;
+  }
+  .btn-primary:hover {
+    background-color: #8b4513;
+    border-color: #8b4513;
+  }
+  .text-muted.font-italic small {
+    color: #8b4513;
+  }
+  .custom-control-label span.text-muted {
+    color: #8b4513;
+  }
+</style>
+{% endblock stylesheets %}
 
 {% block content %}
 
-  <!-- Page content -->
   <div class="container mt--8 pb-5">
-    <!-- Table -->
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8">
-        <div class="card bg-secondary border-0">
+        <div class="card bg-secondary border-0 shadow">
           <div class="card-header bg-transparent pb-5">
-            <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
+            <div class="text-muted text-center mt-2 mb-4"><small>Inscrivez-vous avec</small></div>
             <div class="text-center">
               <a href="#" class="btn btn-neutral btn-icon mr-4">
-                <span class="btn-inner--icon"><img src="/static/assets/img/icons/common/github.svg"></span>
-                <span class="btn-inner--text">Github</span>
+                <span class="btn-inner--icon"><img src="/static/assets/img/icons/common/github.svg" alt="GitHub"></span>
+                <span class="btn-inner--text">GitHub</span>
               </a>
               <a href="#" class="btn btn-neutral btn-icon">
-                <span class="btn-inner--icon"><img src="/static/assets/img/icons/common/google.svg"></span>
+                <span class="btn-inner--icon"><img src="/static/assets/img/icons/common/google.svg" alt="Google"></span>
                 <span class="btn-inner--text">Google</span>
               </a>
             </div>
           </div>
           <div class="card-body px-lg-5 py-lg-5">
             <div class="text-center text-muted mb-4">
-              <small>Or sign up with credentials</small>
+              <small>Ou inscrivez-vous avec vos identifiants</small>
             </div>
             <form role="form">
               <div class="form-group">
                 <div class="input-group input-group-merge input-group-alternative mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                    <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Name" type="text">
+                  <input class="form-control" placeholder="Nom" type="text" aria-label="Nom">
                 </div>
               </div>
               <div class="form-group">
@@ -44,7 +94,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Email" type="email">
+                  <input class="form-control" placeholder="Email" type="email" aria-label="Email">
                 </div>
               </div>
               <div class="form-group">
@@ -52,22 +102,22 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Password" type="password">
+                  <input class="form-control" placeholder="Mot de passe" type="password" aria-label="Mot de passe">
                 </div>
               </div>
-              <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
+              <div class="text-muted font-italic"><small>Force du mot de passe : <span class="text-success font-weight-700">fort</span></small></div>
               <div class="row my-4">
                 <div class="col-12">
                   <div class="custom-control custom-control-alternative custom-checkbox">
-                    <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                    <input class="custom-control-input" id="customCheckRegister" type="checkbox" aria-label="Accepter la politique de confidentialité">
                     <label class="custom-control-label" for="customCheckRegister">
-                      <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
+                      <span class="text-muted">J’accepte la <a href="#!">politique de confidentialité</a></span>
                     </label>
                   </div>
                 </div>
               </div>
               <div class="text-center">
-                <button type="button" class="btn btn-primary mt-4">Create account</button>
+                <button type="button" class="btn btn-primary mt-4">Créer un compte</button>
               </div>
             </form>
           </div>
@@ -78,5 +128,4 @@
 
 {% endblock content %}
 
-<!-- Specific JS goes HERE --> 
 {% block javascripts %}{% endblock javascripts %}

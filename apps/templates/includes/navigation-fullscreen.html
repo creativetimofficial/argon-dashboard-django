@@ -1,62 +1,66 @@
-<nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
+<nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg" style="background-color: transparent;">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <img src="/static/assets/img/brand/white.png" alt="Argon Design - Template Starter Logo.">
+      <img src="/static/assets/img/brand/chicken-logo-white.png" alt="Logo Élevage de poules" style="max-height: 40px;">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
+            aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation"
+            style="border-color: #a57c3c;">
+      <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml;charset=utf8,<svg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'><path stroke=\'%23a57c3c\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/></svg>');"></span>
     </button>
-    <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
+    <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse" style="background-color: #f3ecd7;">
       <div class="navbar-collapse-header">
         <div class="row">
           <div class="col-6 collapse-brand">
             <a href="/">
-              <img src="/static/assets/img/brand/blue.png">
+              <img src="/static/assets/img/brand/chicken-logo-brown.png" alt="Logo brun" style="max-height: 35px;">
             </a>
           </div>
           <div class="col-6 collapse-close">
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-              <span></span>
-              <span></span>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse"
+                    aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation"
+                    style="border-color: #a57c3c;">
+              <span style="background-color:#a57c3c;"></span>
+              <span style="background-color:#a57c3c;"></span>
             </button>
           </div>
         </div>
       </div>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a href="{% url 'login' %}" class="nav-link">
-            <span class="nav-link-inner--text">Login</span>
+          <a href="{% url 'login' %}" class="nav-link" style="color: #6b4c1a; font-weight: 600;">
+            <span class="nav-link-inner--text">Connexion</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{% url 'register' %}" class="nav-link">
-            <span class="nav-link-inner--text">Register</span>
+          <a href="{% url 'register' %}" class="nav-link" style="color: #6b4c1a; font-weight: 600;">
+            <span class="nav-link-inner--text">Inscription</span>
           </a>
         </li>
       </ul>
-      <hr class="d-lg-none" />
+      <hr class="d-lg-none" style="border-color: #a57c3c;" />
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.facebook.com/webappseed" 
-             target="_blank" data-toggle="tooltip" data-original-title="Like us on Facebook">
+          <a class="nav-link nav-link-icon" href="https://www.facebook.com/webappseed" target="_blank"
+             data-toggle="tooltip" data-original-title="Suivez-nous sur Facebook" style="color: #3b5998;">
             <i class="fab fa-facebook-square"></i>
             <span class="nav-link-inner--text d-lg-none">Facebook</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://twitter.com/webappseed" 
-             target="_blank" data-toggle="tooltip" data-original-title="Follow us on Twitter">
+          <a class="nav-link nav-link-icon" href="https://twitter.com/webappseed" target="_blank"
+             data-toggle="tooltip" data-original-title="Suivez-nous sur Twitter" style="color: #1da1f2;">
             <i class="fab fa-twitter-square"></i>
             <span class="nav-link-inner--text d-lg-none">Twitter</span>
           </a>
         </li>
         <li class="nav-item d-none d-lg-block ml-lg-4">
-          <a href="https://appseed.us/admin-dashboards/django-dashboard-argon-pro" 
-             target="_blank" class="btn btn-neutral btn-icon">
+          <a href="https://appseed.us/admin-dashboards/django-dashboard-argon-pro" target="_blank" class="btn btn-neutral btn-icon"
+             style="background-color: #a57c3c; color: #fff; border: none;">
             <span class="btn-inner--icon">
               <i class="fas fa-rocket mr-2"></i>
             </span>
-            <span class="nav-link-inner--text">PRO Version</span>
+            <span class="nav-link-inner--text">Version PRO</span>
           </a>
         </li>
       </ul>
