@@ -1,0 +1,284 @@
+<!--
+Interactive Cell Visualization Tool
+Explore lattice structures for multilayer devices
+-->
+{% extends "layouts/base.html" %}
+
+{% block title %} Cell Visualization {% endblock %}
+
+{% block stylesheets %}
+<style>
+  .lattice-card {
+    transition: all 0.3s ease;
+    border: 2px solid #FFFFFF;
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+  .lattice-card:hover {
+    border-color: #FFFFFF;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+
+  .lattice-card.selected {
+    border-color: #FFFFFF;
+    background-color: transparent;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+
+  .lattice-card .card-title,
+  .lattice-card p {
+    color: #FFFFFF;
+  }
+
+  .lattice-card .text-muted {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  .info-box {
+    background: #0B1E73;
+    border-radius: 10px;
+    padding: 2rem;
+    color: white;
+    margin-bottom: 2rem;
+  }
+
+  .parameter-card {
+    background: #f8f9fe;
+    border-radius: 8px;
+    padding: 1.5rem;
+    height: 100%;
+  }
+
+  .icon-shape-primary {
+    background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%);
+  }
+
+  .visualization-result {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  }
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- Page content -->
+<div class="container-fluid" style="margin-top: 2rem;">
+
+  <!-- About Section -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card shadow" style="background-color: #8BA9F5;">
+        <div class="card-body" style="padding: 2rem;">
+          <h2 class="display-1 mb-3" style="color: #0B1E73; text-align: center;">
+            Interactive Cell Visualization
+          </h2>
+          <p class="lead mb-3" style="color: #0B1E73; text-align: center;">
+            By Emilia Szynwald
+          </p>
+          <p class="mb-3" style="color: #0B1E73;">
+            Multilayer quantum devices, such as twisted bilayers, are cutting-edge platforms for exploring exotic electronic states
+            like Wigner crystals and excitonic phases. This tool helps visualize the atomic lattice structures that form these
+            remarkable materials.
+          </p>
+          <p class="mb-0" style="color: #0B1E73;">
+            <strong>Key Applications:</strong> By adjusting cell parameters, you can explore how electron configurations optimize
+            within different lattice geometries. This is crucial for studying systems with defects (vacancies and interstitials)
+            and understanding electron-hole interactions in bilayer systems. Our computational approach leverages modern machine
+            learning frameworks to make these complex calculations accessible to both experimentalists and theorists.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lattice Type Selection -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <h3 class="mb-3" style="color: #FFFFFF;">
+        Choose Your Lattice Structure:
+      </h3>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card lattice-card h-100 {% if cell_type == 'square' %}selected{% endif %}" onclick="selectLattice('square')">
+        <div class="card-body">
+          <h4 class="card-title mb-1">Square Lattice</h4>
+          <p class="text-sm text-muted mb-2">Perpendicular axes • Equal spacing • 90° angles</p>
+          <p class="mt-3 mb-0">
+            The simplest 2D lattice with perpendicular axes of equal length. Common in oxide materials and
+            certain transition metal dichalcogenides. Ideal for modeling commensurate systems with integer fillings.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card lattice-card h-100 {% if cell_type == 'honeycomb' %}selected{% endif %}" onclick="selectLattice('honeycomb')">
+        <div class="card-body">
+          <h4 class="card-title mb-1">Honeycomb Lattice</h4>
+          <p class="text-sm text-muted mb-2">Hexagonal structure • 60° angles • Two sublattices</p>
+          <p class="mt-3 mb-0">
+            Characteristic of graphene and TMD monolayers like WSe₂. Features two inequivalent sublattices,
+            enabling study of exotic phases and Moiré patterns in twisted bilayers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Parameter Controls -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-header bg-transparent">
+          <h3 class="mb-0">
+            Adjust Parameters
+          </h3>
+        </div>
+        <div class="card-body">
+          <form method="POST" action="{% url 'cells' %}" id="cellForm">
+            {% csrf_token %}
+            <input type="hidden" id="cell_type" name="cell_type" value="{{ cell_type|default:'square' }}">
+
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <div class="parameter-card">
+                  <label class="form-control-label font-weight-bold" for="lattice_constant">
+                    Lattice Constant (a)
+                  </label>
+                  <input type="range" class="form-control-range mt-2" id="lattice_constant_range"
+                         min="0.1" max="5" step="0.1" value="{{ lattice_constant|default:'1.0' }}"
+                         oninput="updateValue('lattice_constant', this.value)">
+                  <input type="number" class="form-control mt-2" id="lattice_constant" name="lattice_constant"
+                         step="0.1" min="0.1" max="5" value="{{ lattice_constant|default:'1.0' }}" required
+                         oninput="updateRange('lattice_constant_range', this.value)">
+                  <small class="form-text text-muted">Controls unit cell size and spacing between atoms</small>
+                </div>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <div class="parameter-card">
+                  <label class="form-control-label font-weight-bold" for="marker_size">
+                    Marker Size
+                  </label>
+                  <input type="range" class="form-control-range mt-2" id="marker_size_range"
+                         min="1" max="50" step="1" value="{{ marker_size|default:'10' }}"
+                         oninput="updateValue('marker_size', this.value)">
+                  <input type="number" class="form-control mt-2" id="marker_size" name="marker_size"
+                         step="1" min="1" max="50" value="{{ marker_size|default:'10' }}" required
+                         oninput="updateRange('marker_size_range', this.value)">
+                  <small class="form-text text-muted">Visual size of atoms/lattice points</small>
+                </div>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <div class="parameter-card">
+                  <label class="form-control-label font-weight-bold" for="line_width">
+                    Line Width
+                  </label>
+                  <input type="range" class="form-control-range mt-2" id="line_width_range"
+                         min="0.5" max="10" step="0.5" value="{{ line_width|default:'2' }}"
+                         oninput="updateValue('line_width', this.value)">
+                  <input type="number" class="form-control mt-2" id="line_width" name="line_width"
+                         step="0.5" min="0.5" max="10" value="{{ line_width|default:'2' }}" required
+                         oninput="updateRange('line_width_range', this.value)">
+                  <small class="form-text text-muted">Thickness of bonds connecting atoms</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-lg" style="background-color: #0B1E73; color: white;">
+                Generate Visualization
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visualization Result -->
+  {% if cell_image %}
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <div class="visualization-result">
+            <div class="text-center mb-4">
+              <img src="data:image/png;base64,{{ cell_image }}"
+                   alt="{% if cell_type == 'square' %}Square Lattice{% else %}Honeycomb Lattice{% endif %}"
+                   class="img-fluid"
+                   style="max-width: 100%; height: auto; border-radius: 10px;">
+            </div>
+
+            <div style="background: #0B1E73; border-radius: 10px; padding: 2rem; color: white;">
+              <h4 class="text-white mb-3">Understanding Your Visualization</h4>
+              <p class="text-white mb-3">
+                {% if cell_type == 'square' %}
+                <strong>Square Lattice:</strong> This structure shows a simple cubic arrangement where atoms sit at 90° to each other.
+                The lattice constant (a={{ lattice_constant }}) determines the spacing between neighboring atoms. This type of lattice
+                is found in certain oxide materials and is useful for modeling electron configurations at commensurate (integer) fillings.
+                {% else %}
+                <strong>Honeycomb Lattice:</strong> This hexagonal structure is characteristic of materials like graphene and transition
+                metal dichalcogenides (TMDs) such as WSe₂. The two sublattices allow for rich physics including Dirac cones and
+                topological phases. When two layers are twisted, Moiré patterns emerge that enable exotic quantum states.
+                {% endif %}
+              </p>
+              <p class="text-white mb-0">
+                <strong>Applications in Research:</strong> These visualizations help understand how electrons optimize their positions
+                in 2D materials, crucial for studying quantum phenomena like Wigner crystallization and superconductivity in twisted bilayers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}
+<script>
+  // Lattice selection handler
+  function selectLattice(type) {
+    document.getElementById('cell_type').value = type;
+
+    // Update visual selection
+    document.querySelectorAll('.lattice-card').forEach(card => {
+      card.classList.remove('selected');
+    });
+    event.currentTarget.classList.add('selected');
+  }
+
+  // Sync range sliders with number inputs
+  function updateValue(inputId, value) {
+    document.getElementById(inputId).value = value;
+  }
+
+  function updateRange(rangeId, value) {
+    document.getElementById(rangeId).value = value;
+  }
+
+  // Smooth scroll to visualization on form submit
+  document.getElementById('cellForm').addEventListener('submit', function() {
+    setTimeout(function() {
+      if (document.querySelector('.visualization-result')) {
+        document.querySelector('.visualization-result').scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+    }, 100);
+  });
+</script>
+{% endblock javascripts %}

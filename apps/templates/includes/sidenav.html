@@ -1,3 +1,4 @@
+<!-- Sidebar navigation: Main menu with icons for all pages -->
 <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
   <div class="scrollbar-inner">
     <!-- Brand -->
@@ -15,6 +16,25 @@
             <a class="nav-link {% if 'index' in segment %} active {% endif %}" href="/">
               <i class="ni ni-tv-2 text-primary"></i>
               <span class="nav-link-text">Dashboard</span>
+            </a>
+          </li>
+          <!-- Custom links for Physics Publication site -->
+          <li class="nav-item">
+            <a class="nav-link {% if 'home' in segment %} active {% endif %}" href="/">
+              <i class="ni ni-shop text-info"></i>
+              <span class="nav-link-text">Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if 'people' in segment %} active {% endif %}" href="{% url 'people' %}">
+              <i class="ni ni-single-02 text-yellow"></i>
+              <span class="nav-link-text">People</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if 'ideas' in segment %} active {% endif %}" href="/ideas.html">
+              <i class="ni ni-chat-round text-purple"></i>
+              <span class="nav-link-text">Ideas</span>
             </a>
           </li>
           <li class="nav-item">

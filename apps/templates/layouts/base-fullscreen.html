@@ -1,4 +1,6 @@
 <!--
+Fullscreen layout: Used for login/register pages without sidenav
+
 =========================================================
 * Argon Dashboard - v1.2.0
 =========================================================
@@ -29,6 +31,14 @@
   <link rel="stylesheet" href="/static/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="/static/assets/css/argon.css?v=1.2.0" type="text/css">
+
+  <!-- Custom CSS -->
+  <style>
+    /* Georgia font for all pages */
+    body, h1, h2, h3, h4, h5, h6, p, span, div, a, li, td, th, label, input, textarea, button, .card, .lead, .text-muted, .description {
+      font-family: Georgia, 'Times New Roman', serif !important;
+    }
+  </style>
 
   <!-- Specific CSS goes HERE -->
   {% block stylesheets %}{% endblock stylesheets %}

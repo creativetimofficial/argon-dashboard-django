@@ -1,0 +1,46 @@
+steps:
+  # Build the container image
+  - id: "build image"
+    name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "${_IMAGE_NAME}", "."]
+
+  # Push the container image to Artifact Registry
+  - id: "push image"
+    name: "gcr.io/cloud-builders/docker"
+    args: ["push", "${_IMAGE_NAME}"]
+
+  # Run database migrations
+  - id: "apply migrations"
+    name: "gcr.io/google-appengine/exec-wrapper"
+    args:
+      [
+        "-i", "${_IMAGE_NAME}",
+        "-s", "${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME}",
+        "-e", "SECRET_KEY=${_SECRET_KEY}",
+        "--",
+        "python", "manage.py", "migrate"
+      ]
+
+  # Collect static files
+  - id: "collect static"
+    name: "gcr.io/google-appengine/exec-wrapper"
+    args:
+      [
+        "-i", "${_IMAGE_NAME}",
+        "-s", "${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME}",
+        "-e", "SECRET_KEY=${_SECRET_KEY}",
+        "--",
+        "python", "manage.py", "collectstatic", "--noinput"
+      ]
+
+options:
+  dynamicSubstitutions: true
+
+substitutions:
+  _IMAGE_NAME: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/physics-site
+  _INSTANCE_NAME: hofstra-medo
+  _REGION: us-central1
+  _SECRET_KEY: S3cr3t_K#Key
+
+images:
+  - "${_IMAGE_NAME}"

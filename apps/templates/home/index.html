@@ -1,414 +1,287 @@
+<!-- Dashboard home page: Research carousel, stats cards, project accordion -->
 {% extends 'layouts/base.html' %}
 
 {% block title %} Dashboard {% endblock title %}
 
 <!-- Specific CSS goes HERE -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+<style>
+  /* Research Carousel Styles */
+  .research-topic {
+    padding: 2rem;
+    min-height: 300px;
+  }
+  
+  .research-topic h3 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .research-topic .lead {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Controls styling moved below progress bars */
+  .research-carousel-controls .btn-arrow {
+    background-color: #FEB612;
+    color: #FFFFFF;
+    border: 1px solid #FEB612;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    min-width: 90px;
+  }
+  .research-carousel-controls .btn-arrow:hover {
+    background-color: #e5a410;
+    color: #FFFFFF;
+  }
+  .research-carousel-controls .btn-arrow i {
+    margin: 0 0.35rem;
+  }
+  
+  .research-topic .ni {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Explore Tool Button Styles */
+  .btn-explore-tool {
+    background-color: transparent;
+    color: #0B1E73;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-explore-tool:hover {
+    background-color: transparent;
+    color: #0B1E73;
+    text-decoration: underline;
+  }
+
+  /* Research Opportunities Hover Accordion */
+  .accordion .card {
+    border: none;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .accordion .card-header {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 0;
+  }
+
+  .accordion .card-header:hover {
+    background-color: rgba(11, 30, 115, 0.05);
+  }
+
+  .accordion .btn-link {
+    color: #0B1E73 !important;
+    text-decoration: none;
+    font-weight: 500;
+    pointer-events: none;
+  }
+
+  .accordion .btn-link::after {
+    display: none !important; /* Hide the default arrow */
+  }
+
+  .accordion .collapse {
+    display: block !important;
+    height: auto !important;
+  }
+
+  .accordion .card-body {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  }
+
+  .accordion .card:hover .card-body {
+    max-height: 200px;
+    opacity: 1;
+    padding-top: 0.5rem;
+  }
+
+  /* Original styles below */
+
+</style>
+{% endblock stylesheets %}
 
 {% block content %}
 
-    <!-- Header -->
-    <div class="header bg-primary pb-6">
+    <div class="header pb-4" style="background-color: #0B1E73;"/>
       <div class="container-fluid">
         <div class="header-body">
           <div class="row align-items-center py-4">
-            <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
-              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Default</li>
-                </ol>
-              </nav>
-            </div>
-            <div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-sm btn-neutral">New</a>
-              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-            </div>
-          </div>
-          <!-- Card stats -->
-          <div class="row">
-            <div class="col-xl-3 col-md-6">
-              <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Total traffic</h5>
-                      <span class="h2 font-weight-bold mb-0">350,897</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                        <i class="ni ni-active-40"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-              <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                      <span class="h2 font-weight-bold mb-0">2,356</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                        <i class="ni ni-chart-pie-35"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-              <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                      <span class="h2 font-weight-bold mb-0">924</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
-                        <i class="ni ni-money-coins"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-              <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                      <span class="h2 font-weight-bold mb-0">49,65%</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                        <i class="ni ni-chart-bar-32"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Page content -->
-    <div class="container-fluid mt--6">
+    <div class="container-fluid" style="margin-top: 2rem;">
       <div class="row">
-        <div class="col-xl-8">
-          <div class="card bg-default">
+        <div class="col-lg-8 col-xl-8 mb-4 mb-xl-0">
+          <div class="card" style="background-color: white;">
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
                 <div class="col">
-                  <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
-                  <h5 class="h3 text-white mb-0">Sales value</h5>
-                </div>
-                <div class="col">
-                  <ul class="nav nav-pills justify-content-end">
-                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
-                      <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                        <span class="d-none d-md-block">Month</span>
-                        <span class="d-md-none">M</span>
-                      </a>
-                    </li>
-                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
-                      <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                        <span class="d-none d-md-block">Week</span>
-                        <span class="d-md-none">W</span>
-                      </a>
-                    </li>
-                  </ul>
+                  <h6 class="text-dark text-uppercase ls-1 mb-1">Current Research</h6>
+                  <h5 class="h3 text-dark mb-0">Featured Topics</h5>
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <!-- Chart -->
-              <div class="chart">
-                <!-- Chart wrapper -->
-                <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+              <!-- Research Topics Carousel -->
+              <div id="researchCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <!-- Topic 1 -->
+                  <div class="carousel-item active">
+                    <div class="research-topic" style="color: #32325d;">
+                      <div class="row align-items-center">
+                        <div class="col-md-3 text-center mb-3 mb-md-0">
+                          <img src="/static/assets/img/theme/emilia.png" alt="Emilia Szynwald" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid rgba(255,255,255,0.3);">
+                          <p class="mt-2 mb-0 text-sm">Emilia Szynwald</p>
+                        </div>
+                        <div class="col-md-9">
+                          <h3 class="font-weight-bold font-italic" style="color: #32325d;">Modeling Charged Multilayer Devices with Defects Using JAX</h3>
+                          <p class="lead" style="color: #525f7f;">Explore lattice structures for multilayer quantum devices such as twisted bilayers, which are cutting-edge platforms for studying exotic electronic states like Wigner crystals and excitonic phases. This tool helps visualize atomic lattice structures and understand how electrons optimize within different geometries.</p>
+                          <div class="mt-3 text-center">
+                            <a href="{% url 'cells' %}" class="btn btn-explore-tool" style="font-size: 1.1rem;">
+                              Explore Interactive Tool
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Topic 2 -->
+                  <div class="carousel-item">
+                    <div class="research-topic" style="color: #32325d;">
+                      <div class="row align-items-center">
+                        <div class="col-md-3 text-center mb-3 mb-md-0">
+                          <img src="/static/assets/img/theme/cameron.png" alt="Cameron Getner" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid rgba(255,255,255,0.3);">
+                          <p class="mt-2 mb-0 text-sm">Cameron Getner</p>
+                        </div>
+                        <div class="col-md-9">
+                          <h3 class="font-weight-bold font-italic" style="color: #32325d;">DFT Simulations of Moiré Superlattices: Quantum Phase Transitions</h3>
+                          <p class="lead" style="color: #525f7f;">Using Density Functional Theory to simulate electrons in moiré superlattices, we observe exotic quantum behaviors. Our research investigates two competing phases—trimer and honeycomb—and explores how an emergent Dirac cone in the band structure may drive transitions between these phases.</p>
+                          <div class="mt-3 text-center">
+                            <a href="{% url 'cameron_research' %}" class="btn btn-explore-tool" style="font-size: 1.1rem;">
+                              Explore Research
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4">
-          <div class="card">
+              <!-- Controls positioned below research progress -->
+              <div class="text-center mt-3 research-carousel-controls">
+                <button class="btn btn-sm btn-arrow mr-2" data-target="#researchCarousel" data-slide="prev" aria-label="Previous">
+                  <i class="fas fa-chevron-left"></i>&nbsp;Prev
+                </button>
+                <button class="btn btn-sm btn-arrow ml-2" data-target="#researchCarousel" data-slide="next" aria-label="Next">
+                  Next&nbsp;<i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div> <!-- card-body -->
+            </div> <!-- card -->
+          </div> <!-- col-lg-8 -->
+          <div class="col-lg-4 col-xl-4">
+          <div class="card" style="height: 100%;">
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
                 <div class="col">
-                  <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                  <h5 class="h3 mb-0">Total orders</h5>
+                  <h6 class="text-uppercase ls-1 mb-1" style="color: #0B1E73;">Research Opportunities</h6>
+                  <h5 class="h3 mb-0" style="color: #0B1E73;">Potential Projects</h5>
                 </div>
               </div>
             </div>
-            <div class="card-body">
-              <!-- Chart -->
-              <div class="chart">
-                <canvas id="chart-bars" class="chart-canvas"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xl-8">
-          <div class="card">
-            <div class="card-header border-0">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h3 class="mb-0">Page visits</h3>
+            <div class="card-body" style="height: 350px; overflow-y: auto;">
+              <div class="accordion" id="projectAccordion">
+                <!-- Project 1 -->
+                <div class="card shadow-none mb-2">
+                  <div class="card-header p-0" id="headingOne">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link btn-block text-left text-primary" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <span>Quantum Computing Tools</span>
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#projectAccordion">
+                    <div class="card-body pt-0">
+                      <p class="text-sm mb-0">Interactive visualization tools for quantum computing concepts.</p>
+                    </div>
+                  </div>
                 </div>
-                <div class="col text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
+
+                <!-- Project 2 -->
+                <div class="card shadow-none mb-2">
+                  <div class="card-header p-0" id="headingTwo">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link btn-block text-left text-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span>ML for Materials Science</span>
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#projectAccordion">
+                    <div class="card-body pt-0">
+                      <p class="text-sm mb-0">Apply ML techniques to predict material properties.</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="table-responsive">
-              <!-- Projects table -->
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Page name</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col">Unique users</th>
-                    <th scope="col">Bounce rate</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">
-                      /argon/
-                    </th>
-                    <td>
-                      4,569
-                    </td>
-                    <td>
-                      340
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/index.html
-                    </th>
-                    <td>
-                      3,985
-                    </td>
-                    <td>
-                      319
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/charts.html
-                    </th>
-                    <td>
-                      3,513
-                    </td>
-                    <td>
-                      294
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/tables.html
-                    </th>
-                    <td>
-                      2,050
-                    </td>
-                    <td>
-                      147
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/profile.html
-                    </th>
-                    <td>
-                      1,795
-                    </td>
-                    <td>
-                      190
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4">
-          <div class="card">
-            <div class="card-header border-0">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h3 class="mb-0">Social traffic</h3>
-                </div>
-                <div class="col text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
+
+                <!-- Project 3 -->
+                <div class="card shadow-none mb-2">
+                  <div class="card-header p-0" id="headingThree">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link btn-block text-left text-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span>Computational Biology</span>
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#projectAccordion">
+                    <div class="card-body pt-0">
+                      <p class="text-sm mb-0">Study biological systems using computational methods.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="table-responsive">
-              <!-- Projects table -->
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Referral</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">
-                      Facebook
-                    </th>
-                    <td>
-                      1,480
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">60%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      Facebook
-                    </th>
-                    <td>
-                      5,480
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">70%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      Google
-                    </th>
-                    <td>
-                      4,807
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">80%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      Instagram
-                    </th>
-                    <td>
-                      3,678
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">75%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      twitter
-                    </th>
-                    <td>
-                      2,645
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">30%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <!-- Learn More Button -->
+              <div class="text-center mt-3">
+                <!-- <a href="#" class="btn btn-sm btn-primary">View All Projects</a> -->
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {% include "includes/footer.html" %}
+      <!-- {% include "includes/footer.html" %} -->
 
     </div>
 
 {% endblock content %}
 
-<!-- Specific JS goes HERE --> 
+<!-- Specific JS goes HERE -->
 {% block javascripts %}
 
   <script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
   <script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+  <script>
+    // Hover accordion functionality - now handled by CSS
+    // Pure CSS hover effect for accordion items
+  </script>
 
 {% endblock javascripts %}

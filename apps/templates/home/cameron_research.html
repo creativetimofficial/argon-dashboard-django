@@ -1,0 +1,323 @@
+<!--
+Cameron Getner's Research: DFT Simulations of Moiré Superlattices
+Exploring quantum phase transitions in twisted bilayer materials
+-->
+{% extends "layouts/base.html" %}
+
+{% block title %} Cameron Getner's Research {% endblock %}
+
+{% block stylesheets %}
+<style>
+  .research-card {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .research-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  .info-box {
+    background: linear-gradient(135deg, #4a5fd8 0%, #5a3d8a 100%);
+    border-radius: 10px;
+    padding: 2rem;
+    color: #0B1E73;
+    margin-bottom: 2rem;
+  }
+
+  .phase-section {
+    background: #0B1E73;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    color: white;
+  }
+
+  .phase-section h4,
+  .phase-section p,
+  .phase-section .text-muted {
+    color: white !important;
+  }
+
+  .image-container {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.2), 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .phase-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .trimer-label {
+    background: #FEB612;
+    color: #0B1E73;
+  }
+
+  .honeycomb-label {
+    background: #FEB612;
+    color: #0B1E73;
+  }
+
+  .dirac-label {
+    background: #FEB612;
+    color: #0B1E73;
+  }
+
+  .key-finding {
+    background: transparent;
+    border-left: 4px solid #FEB612;
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    color: #FEB612;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .key-finding h5 {
+    color: #FEB612;
+    margin-bottom: 0;
+  }
+
+  .key-finding p {
+    color: #FEB612;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    margin-top: 0;
+  }
+
+  .key-finding:hover p {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 0.5rem;
+  }
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- Page content -->
+<div class="container-fluid" style="margin-top: 2rem;">
+
+  <!-- Research Overview -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card shadow" style="background-color: #8BA9F5;">
+        <div class="card-body" style="padding: 2rem;">
+          <h2 class="display-1 mb-2" style="color: #0B1E73; text-align: center;">
+            DFT Simulations of Moiré Superlattices
+          </h2>
+          <p class="lead mb-3" style="color: #0B1E73; text-align: center;">
+            Research by Cameron Getner
+          </p>
+          <p class="mb-3" style="color: #0B1E73;">
+            Using <strong>Density Functional Theory (DFT)</strong>, we simulate the behavior of electrons in
+            moiré superlattices—materials created by stacking and twisting two-dimensional layers at specific angles.
+            These systems exhibit exotic quantum behaviors that challenge our understanding of condensed matter physics.
+          </p>
+          <p class="mb-0" style="color: #0B1E73;">
+            Our current investigation focuses on <strong>two competing quantum phases</strong>: the trimer phase and
+            the honeycomb phase. We hypothesize that an <strong>emergent Dirac cone</strong> in the electronic band
+            structure may be the key mechanism driving the transition between these phases.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase Visualizations -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <h3 class="mb-3">
+        <!-- Phase Visualizations -->
+      </h3>
+    </div>
+  </div>
+
+  <!-- Trimer Phase -->
+  <div class="row mb-4 align-items-center">
+    <div class="col-lg-6">
+      <div class="phase-section">
+        <span class="phase-label trimer-label">
+          Trimer Phase
+        </span>
+        <h4 class="mt-2 mb-3">Fidget Spinner Pattern</h4>
+        <p class="mb-3">
+          The trimer phase exhibits a three-fold symmetric pattern that resembles a fidget spinner. In this
+          configuration, electrons organize into triangular clusters, creating a distinctive rotational symmetry.
+        </p>
+        <p class="mb-0 text-sm text-muted">
+          <strong>Physical significance:</strong> This phase may emerge at specific filling factors and represents
+          a strongly correlated electron state with broken rotational symmetry.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="image-container">
+        <img src="/static/assets/img/research/trimer.webp"
+             alt="Trimer Phase Visualization">
+        <p class="text-center text-sm text-muted mt-2 mb-0">
+          DFT simulation showing the trimer phase with three-fold rotational symmetry
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Honeycomb Phase -->
+  <div class="row mb-4 align-items-center">
+    <div class="col-lg-6">
+      <div class="image-container">
+        <img src="/static/assets/img/research/honeycomb.webp"
+             alt="Honeycomb Phase Visualization">
+        <p class="text-center text-sm text-muted mt-2 mb-0">
+          DFT simulation showing the honeycomb phase with hexagonal symmetry
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="phase-section">
+        <span class="phase-label honeycomb-label">
+          Honeycomb Phase
+        </span>
+        <h4 class="mt-2 mb-3">Hexagonal Arrangement</h4>
+        <p class="mb-3">
+          The honeycomb phase features a hexagonal lattice structure where electrons arrange themselves in a
+          pattern reminiscent of a honeycomb or graphene's crystal structure. This phase exhibits six-fold symmetry.
+        </p>
+        <p class="mb-0 text-sm text-muted">
+          <strong>Physical significance:</strong> The honeycomb arrangement is energetically favorable under certain
+          conditions and may support topological electronic states.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Band Structure -->
+  <div class="row mb-4 align-items-center">
+    <div class="col-lg-6">
+      <div class="phase-section">
+        <span class="phase-label dirac-label">
+          Band Structure Analysis
+        </span>
+        <h4 class="mt-3 mb-3">Emergent Dirac Cone</h4>
+        <p class="mb-3">
+          The electronic band structure reveals the energy-momentum relationship of electrons in the material.
+          The most striking feature is the <strong>emergent Dirac cone</strong>—visible where the red line
+          intersects the conical structure.
+        </p>
+        <p class="mb-3">
+          At the Dirac point, the conduction and valence bands touch, creating a unique electronic state where
+          electrons behave as massless particles, similar to photons. This gives rise to unusual transport
+          properties and quantum Hall effects.
+        </p>
+        <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 5px;">
+          <p class="mb-2 text-sm">
+            <strong>What is a Dirac Cone?</strong>
+          </p>
+          <p class="mb-0 text-sm">
+            A Dirac cone appears when two energy bands meet at a point with linear dispersion. Near this point,
+            electrons obey the Dirac equation (relativistic quantum mechanics) rather than the standard
+            Schrödinger equation, leading to exotic quantum phenomena.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="image-container">
+        <img src="/static/assets/img/research/bandstruct.webp"
+             alt="Band Structure with Dirac Cone">
+        <p class="text-center text-sm text-muted mt-2 mb-0">
+          Electronic band structure showing the emergent Dirac cone (intersection of red line with conical structure)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Findings -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card shadow" style="background-color: #0B1E73;">
+        <div class="card-header bg-transparent">
+          <h3 class="mb-0" style="color:#FEB612; text-align:center; border-bottom: 4px solid #FEB612; padding-bottom: 0.5rem;">
+            Key Findings
+          </h3>
+        </div>
+        <div class="card-body">
+          <div class="key-finding">
+            <h5 class="mb-2">
+              Two Competing Quantum Phases
+            </h5>
+            <p class="mb-0">
+              We have identified two distinct electronic ordering patterns in our simulations: the trimer phase
+              (resembling a fidget spinner pattern) and the honeycomb phase (hexagonal arrangement). These phases
+              represent different ways electrons self-organize in the moiré superlattice.
+            </p>
+          </div>
+
+          <div class="key-finding">
+            <h5 class="mb-2">
+              Emergent Dirac Cone
+            </h5>
+            <p class="mb-0">
+              The band structure reveals an emergent Dirac cone—a conical intersection in the energy dispersion
+              where electrons behave as massless relativistic particles. This feature is visible where the red
+              line intersects the cone-like structure in our band structure plots.
+            </p>
+          </div>
+
+          <div class="key-finding">
+            <h5 class="mb-2">
+              Phase Transition Mechanism
+            </h5>
+            <p class="mb-0">
+              We suspect that the emergent Dirac cone plays a crucial role in mediating the transition between
+              the trimer and honeycomb phases. This hypothesis connects topological features of the band structure
+              to real-space electronic ordering—a fundamental question in quantum materials research.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+{% endblock content %}
+
+{% block javascripts %}
+<script>
+  // Add smooth scrolling for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script>
+{% endblock javascripts %}

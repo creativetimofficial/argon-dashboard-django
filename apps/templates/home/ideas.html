@@ -1,0 +1,212 @@
+<!-- Research ideas and collaboration page -->
+{% extends 'layouts/base.html' %}
+
+{% block title %} Ideas {% endblock title %}
+
+{% block stylesheets %}
+<style>
+  .idea-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+
+  .idea-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  .idea-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    margin: 0.25rem;
+    display: inline-block;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+
+  .comment-count {
+    color: #8898aa;
+    font-size: 0.875rem;
+  }
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="header pb-1 pt-5 pt-md-8" style="background-color: #0B1E73;"/>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="mb-0">Recent Ideas</h3>
+            </div>
+            <!-- <div class="col text-right">
+              <select class="form-control-sm">
+                <option>All Categories</option>
+                <option>Quantum Computing</option>
+                <option>Machine Learning</option>
+                <option>Materials Science</option>
+                <option>Computational Biology</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="card-body"> -->
+          <!-- Idea Cards -->
+          <div class="row">
+            <!-- Idea 1 -->
+            <div class="col-lg-6 mb-4">
+              <div class="card idea-card h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                      <h4 class="card-title mb-2">Placeholder</h4>
+                      <div>
+                        <span class="idea-tag badge badge-primary">Quantum Computing</span>
+                        <!-- <span class="idea-tag badge badge-info"></span> -->
+                      </div>
+                    </div>
+                  </div>
+                  <p class="card-text mb-3">
+                    Placeholder
+                  </p>
+                  <div class="d-flex align-items-center">
+                    <img src="/static/assets/img/theme/paul.jpg" class="author-avatar rounded-circle mr-2" alt="Author">
+                    <span class="text-sm">Dr. Paul Yang</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Idea 2 -->
+            <div class="col-lg-6 mb-4">
+              <div class="card idea-card h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                      <h4 class="card-title mb-2"> Modeling Charged Multilayer Devices with Defects Using JAX</h4>
+                      <div>
+                        <span class="idea-tag badge badge-success">Machine Learning</span>
+                        <span class="idea-tag badge badge-warning">Computer Science</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="card-text mb-3">
+                   introduce an open-source computational framework built on the JAX automatic differentiation and just-in-time compilation ecosystem to model
+                    charged multilayer systems with vacancies and interstitials. 
+                    The tool enables flexible simulations of multilayer electron configurations within variable
+                     simulation cells and supports optimization of the structural degrees of freedom.
+                  </p>
+                  <div class="d-flex align-items-center">
+                    <img src="/static/assets/img/theme/emilia.png" class="author-avatar rounded-circle mr-2" alt="Author">
+                    <span class="text-sm">Emilia Szynwald</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Idea 3 -->
+            <div class="col-lg-6 mb-4">
+              <div class="card idea-card h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                      <h4 class="card-title mb-2">Placeholder</h4>
+                      <div>
+                        <span class="idea-tag badge badge-danger">Physics</span>
+                        <!-- <span class="idea-tag badge badge-primary"></span> -->
+                      </div>
+                    </div>
+                  </div>
+                  <p class="card-text mb-3">
+                    Using DFT to simulate electrons in moiré superlattices, observing exotic quantum behaviors. Currently, we are investigating two 
+                    competing phases that we refer to as trimer and honeycomb.
+                     We suspect that an emergent Dirac cone in the band structure may cause a transition between these two phases.
+                  </p>
+                  <div class="d-flex align-items-center">
+                    <img src="/static/assets/img/theme/cameron.png" class="author-avatar rounded-circle mr-2" alt="Author">
+                    <span class="text-sm">Cameron Getner</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Idea 4 -->
+            <div class="col-lg-6 mb-4">
+              <div class="card idea-card h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                      <h4 class="card-title mb-2">Placeholder</h4>
+                      <div>
+                        <span class="idea-tag badge badge-info">Physics</span>
+                        <!-- <span class="idea-tag badge badge-success"></span> -->
+                      </div>
+                    </div>
+                  </div>
+                  <p class="card-text mb-3">
+                   Placeholder
+                  </p>
+                  <div class="d-flex align-items-center">
+                    <img src="/static/assets/img/theme/paul.jpg" class="author-avatar rounded-circle mr-2" alt="Author">
+                    <span class="text-sm">Dr. Paul Yang</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "includes/footer.html" %}
+</div>
+
+<!-- New Idea Modal -->
+<!-- <div class="modal fade" id="newIdeaModal" tabindex="-1" role="dialog" aria-labelledby="newIdeaModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newIdeaModalLabel">Submit New Research Idea</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="ideaTitle">Title</label>
+            <input type="text" class="form-control" id="ideaTitle" placeholder="Brief title for your idea">
+          </div>
+          <div class="form-group">
+            <label for="ideaDescription">Description</label>
+            <textarea class="form-control" id="ideaDescription" rows="4" placeholder="Describe your research idea..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="ideaCategory">Category</label>
+            <select class="form-control" id="ideaCategory">
+              <option>Quantum Computing</option>
+              <option>Machine Learning</option>
+              <option>Materials Science</option>
+              <option>Computational Biology</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Submit Idea</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} -->

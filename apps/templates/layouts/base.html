@@ -1,4 +1,6 @@
 <!--
+Main layout: Navigation, sidenav, footer, CSS/JS imports for all pages
+
 =========================================================
 * Argon Dashboard - v1.2.0
 =========================================================
@@ -35,6 +37,29 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="/static/assets/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="/static/assets/css/custom.css" type="text/css">
+
+  <!-- Custom CSS -->
+  <style>
+    /* Georgia font for all pages */
+    body, h1, h2, h3, h4, h5, h6, p, span, div, a, li, td, th, label, input, textarea, button, .card, .lead, .text-muted, .description {
+      font-family: Georgia, 'Times New Roman', serif !important;
+    }
+
+    /* Dark blue background for entire page */
+    body {
+      background-color: #0B1E73 !important;
+    }
+
+    .main-content {
+      margin-left: 0 !important;
+      width: 100% !important;
+      background-color: #0B1E73 !important;
+    }
+    .navbar-vertical.navbar-expand-md {
+      display: none !important;
+    }
+  </style>
 
   <!-- Specific CSS goes HERE -->
   {% block stylesheets %}{% endblock stylesheets %}
@@ -42,15 +67,9 @@
 </head>
 
 <body class="">
-
-  {% include "includes/sidenav.html" %}
-
   <div class="main-content" id="panel">
-
     {% include "includes/navigation.html" %}
-
     {% block content %}{% endblock content %}
-
   </div>
 
   {% include "includes/scripts.html" %}

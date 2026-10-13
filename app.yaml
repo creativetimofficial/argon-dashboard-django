@@ -1,0 +1,17 @@
+runtime: custom
+env: flex
+
+# Use a custom runtime (Dockerfile) to avoid App Engine managed-runtime EoS validation
+env_variables:
+  INSTANCE_HOST: '127.0.0.1'
+  DB_PORT: '5432'
+  DB_USER: ${DB_USER}
+  DB_PASS: ${DB_PASS}
+  DB_NAME: ${DB_NAME}
+automatic_scaling:
+  # For the App Engine flexible environment use min_num_instances/max_num_instances
+  min_num_instances: 1
+  max_num_instances: 10
+
+beta_settings:
+  cloud_sql_instances: "v1physics-site:us-central1:hofstra-medo"

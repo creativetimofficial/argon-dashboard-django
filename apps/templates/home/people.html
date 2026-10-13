@@ -1,0 +1,87 @@
+<!-- Research team directory: Grid of contributor cards with profile links -->
+{% extends 'layouts/base.html' %}
+
+{% block title %} People {% endblock title %}
+
+{% block stylesheets %}
+<style>
+  .contributor-avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 3px solid #0B1E73;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+  }
+
+  .list-group-item:hover .contributor-avatar {
+    transform: scale(1.05);
+  }
+
+  .list-group-item {
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .list-group-item:hover {
+    background-color: #f7fafc;
+  }
+
+  .contributor-role {
+    color: #8898aa;
+    font-size: 0.875rem;
+  }
+
+  .contributor-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #32325d;
+    margin-bottom: 0.25rem;
+  }
+
+  .contributor-stats {
+    font-size: 0.875rem;
+    color: #525f7f;
+  }
+
+  .contributor-stats span {
+    margin-right: 1rem;
+  }
+
+  .contributor-stats i {
+    margin-right: 0.25rem;
+  }
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="header pb-1 pt-5 pt-md-8" style="background-color: #0B1E73;"/>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-body">
+          <!-- Contributors list with avatars -->
+          <div class="list-group">
+            {% for username, person in contributors.items %}
+            <a class="list-group-item list-group-item-action py-4" href="{% url 'profile' username %}">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <img alt="{{ person.name }}" src="{{ person.image }}" class="contributor-avatar rounded-circle">
+                </div>
+                <div class="col ml--2">
+                  <h4 class="contributor-name">{{ person.name }}</h4>
+                  <div class="contributor-role">{{ person.role }} | {{ person.department }}</div>
+                  <p class="text-muted mt-2 mb-2">{{ person.bio|truncatewords:25 }}</p>
+                </div>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
